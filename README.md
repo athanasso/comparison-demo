@@ -1,36 +1,216 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🦡 CompareKat - Insurance Price Comparison Demo
 
-## Getting Started
+A full-featured price comparison website demo built with Next.js 14, inspired by Compare the Market. This project demonstrates modern web development practices including multi-step forms, state management, and SEO-optimized static pages.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- 🏠 **SEO-Optimized Landing Pages** - Static marketing pages with ISR support
+- 📝 **Multi-Step Quote Wizard** - 5-step form with validation and progress tracking
+- 📊 **Dynamic Results Dashboard** - Sortable, filterable comparison grid
+- 💾 **Persistent State** - Form data saved to localStorage
+- 🦡 **Mascot Helper** - Idle-triggered assistant with tips
+- 🔄 **Streaming API** - Mock quote engine with Server-Sent Events
+- 📱 **Fully Responsive** - Mobile-first design
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| [Next.js 16](https://nextjs.org/) | React framework with App Router |
+| [TypeScript](https://www.typescriptlang.org/) | Type safety |
+| [Tailwind CSS 4](https://tailwindcss.com/) | Utility-first styling |
+| [Zustand](https://zustand-demo.pmnd.rs/) | State management |
+| [Zod](https://zod.dev/) | Schema validation |
+| [React Hook Form](https://react-hook-form.com/) | Form handling |
+| [Lucide React](https://lucide.dev/) | Icons |
+
+## 📁 Project Structure
+
+```
+app/
+├── (marketing)/              # Static SEO pages
+│   ├── page.tsx              # Homepage
+│   ├── layout.tsx            # Marketing layout with nav/footer
+│   └── insurance/[type]/     # Dynamic landing pages
+├── (journey)/                # Quote funnel
+│   └── quote/[vertical]/     # Multi-step wizard
+├── (app)/                    # Application pages
+│   └── results/              # Comparison dashboard
+└── api/
+    └── get-quotes/           # Mock API endpoint
+
+components/
+├── wizard/                   # Form wizard components
+│   ├── wizard-form.tsx
+│   └── steps/                # Individual form steps
+├── results/                  # Results page components
+│   ├── results-grid.tsx
+│   └── quote-card.tsx
+├── ui/                       # Shared UI components
+└── mascot-helper.tsx         # Floating assistant
+
+lib/
+├── validation.ts             # Zod schemas
+├── mock-data.ts              # Mock providers & quotes
+└── utils.ts                  # Utility functions
+
+store/
+└── quote-store.ts            # Zustand state management
+
+types/
+└── index.ts                  # TypeScript interfaces
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18+
+- npm, yarn, or pnpm
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Clone the repository
+git clone <repository-url>
+cd comparison-demo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Install dependencies
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Start development server
+npm run dev
+```
 
-## Deploy on Vercel
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Build for Production
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm start
+```
+
+## 📄 Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Homepage with hero, product grid, trust signals |
+| `/insurance/[type]` | Landing pages for car, home, pet, travel, life, energy |
+| `/quote/car` | Car insurance quote wizard |
+| `/results` | Quote comparison dashboard |
+
+## 🧩 Key Components
+
+### WizardForm
+Multi-step form wizard with 5 steps:
+1. **Personal Details** - Name, contact, address, occupation
+2. **Driving Details** - License info, claims, convictions
+3. **Vehicle Details** - Registration, make/model, usage
+4. **Cover Preferences** - Cover level, excess, payment frequency
+5. **Review** - Summary before submission
+
+### ResultsGrid
+- Animated loading with progress indicator
+- Sort by price (low/high), rating, provider name
+- Expandable quote cards with full details
+- Meerkat Rewards integration
+
+### MascotHelper
+- Fixed position floating assistant
+- Activates after 10 seconds of inactivity
+- Displays helpful tips and hints
+- "Simples!" messaging
+
+## 🔧 Configuration
+
+### Environment Variables
+
+No environment variables required for the demo. All data is mocked.
+
+### Customization
+
+- **Theme colors**: Edit CSS variables in `app/globals.css`
+- **Providers**: Modify `lib/mock-data.ts` to add/change providers
+- **Validation**: Update schemas in `lib/validation.ts`
+- **Insurance types**: Add verticals in `lib/mock-data.ts`
+
+## 📝 API Routes
+
+### POST `/api/get-quotes`
+
+Generate mock insurance quotes.
+
+```typescript
+// Request body
+{
+  coverLevel: 'comprehensive' | 'third_party_fire_theft' | 'third_party',
+  count: number
+}
+
+// Response
+{
+  success: boolean,
+  quotes: CarInsuranceQuote[],
+  timestamp: string,
+  searchId: string
+}
+```
+
+### GET `/api/get-quotes`
+
+Stream quotes using Server-Sent Events.
+
+Query params: `coverLevel`, `count`
+
+## 🎨 Design System
+
+### Colors
+- **Primary**: Teal (`#14b8a6`) to Emerald gradient
+- **Secondary**: Amber (`#f59e0b`) to Orange accent
+- **Background**: Slate grays with subtle gradients
+
+### Typography
+- Font: Geist Sans (via `next/font`)
+- Headings: Bold/Black weights
+- Body: Regular weight with muted colors
+
+### Animations
+- `animate-float` - Gentle floating effect
+- `animate-bounce-slow` - Slow bounce for CTAs
+- `animate-shimmer` - Skeleton loading effect
+- `animate-slide-up` - Entry animations
+
+## 📚 Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Zustand Documentation](https://docs.pmnd.rs/zustand)
+- [Zod Documentation](https://zod.dev/)
+- [React Hook Form Documentation](https://react-hook-form.com/docs)
+
+## 🚢 Deployment
+
+### Vercel (Recommended)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+### Other Platforms
+
+```bash
+npm run build
+# Deploy the .next folder to your hosting provider
+```
+
+## 📄 License
+
+This project is for demonstration purposes. See [LICENSE](LICENSE) for details.
+
+---
+
+Built with 💚 by [Your Name] | Inspired by Compare the Market
