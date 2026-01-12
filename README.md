@@ -213,4 +213,4 @@ This project is for demonstration purposes. See [LICENSE](LICENSE) for details.
 
 ---
 
-Built with 💚 by [Your Name] | Inspired by Compare the Market
+Built with 💚 by athanasso | Inspired by Compare the Market
