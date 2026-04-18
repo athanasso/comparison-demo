@@ -25,53 +25,53 @@ export function ReviewStep() {
   const sections = [
     {
       id: 'personal',
-      title: 'About You',
+      title: 'Σχετικά με Εσάς',
       icon: User,
       items: [
-        { label: 'Name', value: `${personalDetails.title} ${personalDetails.firstName} ${personalDetails.lastName}` },
-        { label: 'Date of Birth', value: personalDetails.dateOfBirth ? formatDate(personalDetails.dateOfBirth) : '-' },
+        { label: 'Όνομα', value: `${personalDetails.title} ${personalDetails.firstName} ${personalDetails.lastName}` },
+        { label: 'Ημερομηνία Γέννησης', value: personalDetails.dateOfBirth ? formatDate(personalDetails.dateOfBirth) : '-' },
         { label: 'Email', value: personalDetails.email },
-        { label: 'Phone', value: personalDetails.phone },
-        { label: 'Address', value: personalDetails.address ? `${personalDetails.address.line1}, ${personalDetails.address.city}, ${personalDetails.address.postcode}` : '-' },
-        { label: 'Occupation', value: personalDetails.occupation },
-        { label: 'Employment', value: personalDetails.employmentStatus?.replace('_', ' ') },
+        { label: 'Τηλέφωνο', value: personalDetails.phone },
+        { label: 'Διεύθυνση', value: personalDetails.address ? `${personalDetails.address.line1}, ${personalDetails.address.city}, ${personalDetails.address.postcode}` : '-' },
+        { label: 'Επάγγελμα', value: personalDetails.occupation },
+        { label: 'Εργασία', value: personalDetails.employmentStatus?.replace('_', ' ') },
       ],
     },
     {
       id: 'driving',
-      title: 'Your Driving',
+      title: 'Η Οδήγησή σας',
       icon: FileText,
       items: [
-        { label: 'License Type', value: drivingDetails.licenseType?.replace('_', ' ').toUpperCase() },
-        { label: 'License Number', value: drivingDetails.licenseNumber },
-        { label: 'Years Held', value: `${drivingDetails.yearsHeld} years` },
-        { label: 'Pass Plus', value: drivingDetails.passedPlus ? 'Yes' : 'No' },
-        { label: 'Medical Conditions', value: drivingDetails.medicalConditions ? 'Yes - DVLA aware' : 'None' },
+        { label: 'Τύπος Διπλώματος', value: drivingDetails.licenseType?.replace('full_gr', 'Ελληνικό Κανονικό').replace('provisional', 'Προσωρινό').replace('eu', 'Ευρωπαϊκό').replace('international', 'Διεθνές') },
+        { label: 'Αριθμός Διπλώματος', value: drivingDetails.licenseNumber },
+        { label: 'Χρόνια Κατοχής', value: `${drivingDetails.yearsHeld} χρόνια` },
+        { label: 'Πρόσθετα Μαθήματα', value: drivingDetails.passedPlus ? 'Ναι' : 'Όχι' },
+        { label: 'Ιατρικές Καταστάσεις', value: drivingDetails.medicalConditions ? 'Ναι - η αρχή ενήμερη' : 'Καμία' },
       ],
     },
     {
       id: 'vehicle',
-      title: 'Your Vehicle',
+      title: 'Το Αυτοκίνητό σας',
       icon: Car,
       items: [
-        { label: 'Registration', value: vehicleDetails.registration?.toUpperCase() },
-        { label: 'Vehicle', value: `${vehicleDetails.year} ${vehicleDetails.make} ${vehicleDetails.model}` },
-        { label: 'Engine', value: `${vehicleDetails.engineSize}cc ${vehicleDetails.fuelType} ${vehicleDetails.transmission}` },
-        { label: 'Value', value: vehicleDetails.currentValue ? `£${vehicleDetails.currentValue.toLocaleString()}` : '-' },
-        { label: 'Annual Mileage', value: vehicleDetails.annualMileage ? `${vehicleDetails.annualMileage.toLocaleString()} miles` : '-' },
-        { label: 'Usage', value: vehicleDetails.usage },
-        { label: 'Kept Overnight', value: vehicleDetails.overnightLocation?.replace('_', ' ') },
+        { label: 'Αρ. Κυκλοφορίας', value: vehicleDetails.registration?.toUpperCase() },
+        { label: 'Όχημα', value: `${vehicleDetails.year} ${vehicleDetails.make} ${vehicleDetails.model}` },
+        { label: 'Κινητήρας', value: `${vehicleDetails.engineSize}cc ${vehicleDetails.fuelType} ${vehicleDetails.transmission}` },
+        { label: 'Αξία', value: vehicleDetails.currentValue ? `€${vehicleDetails.currentValue.toLocaleString('el-GR')}` : '-' },
+        { label: 'Ετήσια Χλμ', value: vehicleDetails.annualMileage ? `${vehicleDetails.annualMileage.toLocaleString('el-GR')} χλμ` : '-' },
+        { label: 'Χρήση', value: vehicleDetails.usage },
+        { label: 'Νυχτ. Στάθμευση', value: vehicleDetails.overnightLocation?.replace('_', ' ') },
       ],
     },
     {
       id: 'cover',
-      title: 'Your Cover',
+      title: 'Η Κάλυψή σας',
       icon: Shield,
       items: [
-        { label: 'Cover Level', value: coverPreferences.coverLevel?.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) },
-        { label: 'Voluntary Excess', value: coverPreferences.voluntaryExcess !== undefined ? `£${coverPreferences.voluntaryExcess}` : '-' },
-        { label: 'Payment', value: coverPreferences.paymentFrequency === 'annual' ? 'Pay Annually' : 'Pay Monthly' },
-        { label: 'Start Date', value: coverPreferences.startDate ? formatDate(coverPreferences.startDate) : '-' },
+        { label: 'Επίπεδο Κάλυψης', value: coverPreferences.coverLevel?.replace('comprehensive', 'Μικτή (Πλήρης)').replace('third_party_fire_theft', 'Τρίτων, Πυρός & Κλοπής').replace('third_party', 'Μόνο Τρίτων') },
+        { label: 'Προαιρετική Απαλλαγή', value: coverPreferences.voluntaryExcess !== undefined ? `€${coverPreferences.voluntaryExcess}` : '-' },
+        { label: 'Πληρωμή', value: coverPreferences.paymentFrequency === 'annual' ? 'Ετήσια' : 'Μηνιαία' },
+        { label: 'Ημ. Έναρξης', value: coverPreferences.startDate ? formatDate(coverPreferences.startDate) : '-' },
       ],
     },
   ];
@@ -83,8 +83,8 @@ export function ReviewStep() {
           <Search className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-slate-800">Review Your Details</h2>
-          <p className="text-slate-500">Check everything is correct before getting quotes</p>
+          <h2 className="text-2xl font-bold text-slate-800">Ανασκόπηση Στοιχείων</h2>
+          <p className="text-slate-500">Ελέγξτε ότι όλα είναι σωστά πριν λάβετε προσφορές</p>
         </div>
       </div>
 
@@ -108,7 +108,7 @@ export function ReviewStep() {
                 className="flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium text-sm transition-colors"
               >
                 <Edit2 className="w-4 h-4" />
-                Edit
+                Επεξεργασία
               </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -128,8 +128,8 @@ export function ReviewStep() {
       {/* Terms Notice */}
       <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl">
         <p className="text-sm text-amber-800">
-          By clicking &quot;Get My Quotes&quot;, you confirm that the information provided is accurate. 
-          Providing false information may invalidate your insurance policy.
+          Κάνοντας κλικ στο &quot;Λάβετε Προσφορές&quot;, επιβεβαιώνετε ότι τα στοιχεία είναι ακριβή. 
+          Η παροχή ψευδών πληροφοριών μπορεί να ακυρώσει το ασφαλιστήριο.
         </p>
       </div>
 
@@ -147,7 +147,7 @@ export function ReviewStep() {
           "
         >
           <ArrowLeft className="w-5 h-5" />
-          Back
+          Πίσω
         </button>
         <button
           type="button"
@@ -162,7 +162,7 @@ export function ReviewStep() {
           "
         >
           <Search className="w-5 h-5" />
-          Get My Quotes
+          Λάβετε Προσφορές
         </button>
       </div>
     </div>

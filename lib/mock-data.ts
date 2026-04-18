@@ -1,45 +1,45 @@
 import type { CarInsuranceQuote, Provider, CoverLevel } from '@/types';
 
 // ============================================
-// Mock Provider Data
+// Mock Provider Data (Greek Insurance Companies)
 // ============================================
 export const MOCK_PROVIDERS: Provider[] = [
-  { name: 'Admiral', logoUrl: '/providers/admiral.svg', rating: 5, sponsored: false },
-  { name: 'Direct Line', logoUrl: '/providers/directline.svg', rating: 5, sponsored: false },
-  { name: 'Aviva', logoUrl: '/providers/aviva.svg', rating: 4, sponsored: false },
-  { name: 'Churchill', logoUrl: '/providers/churchill.svg', rating: 4, sponsored: false },
-  { name: 'Hastings Direct', logoUrl: '/providers/hastings.svg', rating: 4, sponsored: true },
-  { name: 'LV=', logoUrl: '/providers/lv.svg', rating: 5, sponsored: false },
-  { name: 'More Than', logoUrl: '/providers/morethan.svg', rating: 3, sponsored: false },
-  { name: 'Esure', logoUrl: '/providers/esure.svg', rating: 4, sponsored: false },
-  { name: 'Confused.com', logoUrl: '/providers/confused.svg', rating: 3, sponsored: false },
-  { name: 'GoCompare', logoUrl: '/providers/gocompare.svg', rating: 4, sponsored: false },
-  { name: 'RAC', logoUrl: '/providers/rac.svg', rating: 4, sponsored: false },
-  { name: 'AA Insurance', logoUrl: '/providers/aa.svg', rating: 5, sponsored: false },
-  { name: 'Swinton', logoUrl: '/providers/swinton.svg', rating: 3, sponsored: false },
-  { name: 'Saga', logoUrl: '/providers/saga.svg', rating: 4, sponsored: false },
-  { name: 'Co-op Insurance', logoUrl: '/providers/coop.svg', rating: 3, sponsored: false },
+  { name: 'Εθνική Ασφαλιστική', logoUrl: '/providers/ethniki.svg', rating: 5, sponsored: false },
+  { name: 'Interamerican', logoUrl: '/providers/interamerican.svg', rating: 5, sponsored: false },
+  { name: 'Eurolife FFH', logoUrl: '/providers/eurolife.svg', rating: 4, sponsored: false },
+  { name: 'ΝΝ Hellas', logoUrl: '/providers/nnhellas.svg', rating: 4, sponsored: false },
+  { name: 'Generali Greece', logoUrl: '/providers/generali.svg', rating: 4, sponsored: true },
+  { name: 'Groupama Ασφαλιστική', logoUrl: '/providers/groupama.svg', rating: 5, sponsored: false },
+  { name: 'Ευρωπαϊκή Πίστη', logoUrl: '/providers/europisti.svg', rating: 4, sponsored: false },
+  { name: 'Allianz', logoUrl: '/providers/allianz.svg', rating: 4, sponsored: false },
+  { name: 'AXA Ασφάλειες', logoUrl: '/providers/axa.svg', rating: 5, sponsored: false },
+  { name: 'Ergo Ασφαλιστική', logoUrl: '/providers/ergo.svg', rating: 4, sponsored: false },
+  { name: 'Minetta', logoUrl: '/providers/minetta.svg', rating: 3, sponsored: false },
+  { name: 'Anytime', logoUrl: '/providers/anytime.svg', rating: 4, sponsored: false },
+  { name: 'Hellas Direct', logoUrl: '/providers/hellasdirect.svg', rating: 4, sponsored: false },
+  { name: 'INTERLIFE', logoUrl: '/providers/interlife.svg', rating: 3, sponsored: false },
+  { name: 'Ατλαντική Ένωση', logoUrl: '/providers/atlantiki.svg', rating: 3, sponsored: false },
 ];
 
 // ============================================
-// Marketing Text Templates
+// Marketing Text Templates (Greek)
 // ============================================
 const MARKETING_TEXTS = [
-  'Cheapest for 17-24 year olds',
-  'Best rated for customer service',
-  'Includes free breakdown cover',
-  'Most comprehensive cover',
-  'Top pick for new drivers',
-  '5-star Defaqto rated',
-  'Award-winning claims service',
-  'Multi-car discount available',
-  'No claims discount protected',
-  'Voted best value insurer 2024',
-  'Family-friendly policies',
-  'Low deposit options available',
-  'Interest-free monthly payments',
-  'Fast track claims process',
-  'Named driver guarantee',
+  'Φθηνότερη για νέους οδηγούς 18-24',
+  'Κορυφαία εξυπηρέτηση πελατών',
+  'Δωρεάν οδική βοήθεια',
+  'Πιο ολοκληρωμένη κάλυψη',
+  'Ιδανική για νέους οδηγούς',
+  'Βραβευμένη εξυπηρέτηση αξιώσεων',
+  'Έκπτωση πολλαπλών οχημάτων',
+  'Bonus-Malus προστασία',
+  'Ψηφίστηκε καλύτερη αξία 2024',
+  'Φιλικές πολιτικές για οικογένειες',
+  'Χαμηλή προκαταβολή',
+  'Άτοκες μηνιαίες δόσεις',
+  'Γρήγορη διαδικασία αξιώσεων',
+  'Εγγύηση επώνυμου οδηγού',
+  'Online έκπτωση',
 ];
 
 // ============================================
@@ -134,7 +134,7 @@ export const generateMockQuotes = (
   const selectedProviders = shuffled.slice(0, Math.min(count, shuffled.length));
 
   // Base price varies by random factors (would be user demographics in real app)
-  const basePrice = randomBetween(350, 850);
+  const basePrice = randomBetween(250, 650);
 
   const quotes = selectedProviders.map((provider) => 
     generateMockQuote(provider, coverLevel, basePrice)
@@ -154,50 +154,66 @@ export const generateMockQuotes = (
 export const INSURANCE_VERTICALS = [
   {
     slug: 'car' as const,
-    title: 'Car Insurance',
-    description: 'Compare cheap car insurance quotes from over 100 providers',
+    title: 'Ασφάλεια Αυτοκινήτου',
+    description: 'Συγκρίνετε φθηνές ασφάλειες αυτοκινήτου από πάνω από 100 παρόχους',
     icon: '🚗',
     color: '#00A5E0',
-    features: ['Comprehensive cover', 'Third party only', 'Fire & theft', 'Breakdown cover'],
+    features: ['Μικτή κάλυψη', 'Μόνο τρίτων', 'Πυρός & κλοπής', 'Οδική βοήθεια'],
   },
   {
     slug: 'home' as const,
-    title: 'Home Insurance',
-    description: 'Protect your home and belongings with the right cover',
+    title: 'Ασφάλεια Κατοικίας',
+    description: 'Προστατέψτε το σπίτι και τα υπάρχοντά σας με τη σωστή κάλυψη',
     icon: '🏠',
     color: '#7B68EE',
-    features: ['Buildings insurance', 'Contents insurance', 'Combined policies', 'Accidental damage'],
+    features: ['Ασφάλεια κτιρίου', 'Ασφάλεια περιεχομένου', 'Συνδυασμένες', 'Τυχαία ζημιά'],
   },
   {
     slug: 'pet' as const,
-    title: 'Pet Insurance',
-    description: 'Keep your furry friends protected with comprehensive pet cover',
+    title: 'Ασφάλεια Κατοικιδίων',
+    description: 'Κρατήστε τα κατοικίδιά σας προστατευμένα',
     icon: '🐕',
     color: '#FF6B6B',
-    features: ['Lifetime cover', 'Accident only', 'Vet fees', 'Third party liability'],
+    features: ['Ισόβια κάλυψη', 'Μόνο ατύχημα', 'Κτηνιατρικά', 'Αστική ευθύνη'],
   },
   {
     slug: 'travel' as const,
-    title: 'Travel Insurance',
-    description: 'Travel worry-free with cover for the unexpected',
+    title: 'Ασφάλεια Ταξιδιού',
+    description: 'Ταξιδέψτε ξένοιαστα με κάλυψη για το αναπάντεχο',
     icon: '✈️',
     color: '#4ECDC4',
-    features: ['Single trip', 'Annual multi-trip', 'Medical cover', 'Cancellation protection'],
+    features: ['Μεμονωμένο ταξίδι', 'Ετήσια πολλαπλή', 'Ιατρική κάλυψη', 'Ακύρωση'],
   },
   {
     slug: 'life' as const,
-    title: 'Life Insurance',
-    description: 'Protect your loved ones with life insurance cover',
+    title: 'Ασφάλεια Ζωής',
+    description: 'Προστατέψτε τους αγαπημένους σας με ασφάλεια ζωής',
     icon: '❤️',
     color: '#E91E63',
-    features: ['Term life', 'Whole life', 'Critical illness', 'Income protection'],
+    features: ['Προθεσμιακή', 'Ισόβια', 'Σοβαρή ασθένεια', 'Προστασία εισοδήματος'],
   },
   {
     slug: 'energy' as const,
-    title: 'Energy',
-    description: 'Compare gas and electricity tariffs to save on your bills',
+    title: 'Ενέργεια',
+    description: 'Συγκρίνετε τιμολόγια ρεύματος και φυσικού αερίου',
     icon: '⚡',
     color: '#FFC107',
-    features: ['Fixed tariffs', 'Variable rates', 'Green energy', 'Dual fuel discounts'],
+    features: ['Σταθερά τιμολόγια', 'Κυμαινόμενα', 'Πράσινη ενέργεια', 'Διπλό καύσιμο'],
+  },
+  {
+    slug: 'internet' as const,
+    title: 'Ίντερνετ',
+    description: 'Συγκρίνετε παρόχους ίντερνετ και πακέτα ευρυζωνικότητας',
+    icon: '🌐',
+    color: '#2196F3',
+    features: ['Οπτική ίνα', 'VDSL', 'Δορυφορικό', 'Πακέτα TV+Internet'],
+  },
+  {
+    slug: 'phone' as const,
+    title: 'Τηλεφωνία',
+    description: 'Συγκρίνετε προγράμματα κινητής και σταθερής τηλεφωνίας',
+    icon: '📱',
+    color: '#9C27B0',
+    features: ['Κινητή τηλεφωνία', 'Σταθερή', 'Πακέτα data', 'Οικογενειακά πακέτα'],
   },
 ];

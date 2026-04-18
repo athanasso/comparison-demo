@@ -5,15 +5,15 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('en-GB', {
+  return new Intl.NumberFormat('el-GR', {
     style: 'currency',
-    currency: 'GBP',
+    currency: 'EUR',
     minimumFractionDigits: 2,
   }).format(amount);
 }
 
 export function formatDate(date: string | Date): string {
-  return new Intl.DateTimeFormat('en-GB', {
+  return new Intl.DateTimeFormat('el-GR', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',

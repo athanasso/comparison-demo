@@ -14,11 +14,17 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { vertical } = await params;
-  const verticalName = vertical.charAt(0).toUpperCase() + vertical.slice(1);
+  const verticalNames: Record<string, string> = {
+    car: 'Αυτοκινήτου',
+    home: 'Κατοικίας',
+    pet: 'Κατοικιδίων',
+    travel: 'Ταξιδιού',
+  };
+  const verticalName = verticalNames[vertical] || vertical;
   
   return {
-    title: `${verticalName} Insurance Quote | CompareKat`,
-    description: `Get your ${vertical} insurance quote in minutes. Compare prices from over 100 providers.`,
+    title: `Προσφορά Ασφάλειας ${verticalName} | Sygrineto`,
+    description: `Λάβετε προσφορά ασφάλειας ${verticalName.toLowerCase()} σε λίγα λεπτά. Συγκρίνετε τιμές από πάνω από 100 παρόχους.`,
   };
 }
 
@@ -29,7 +35,13 @@ export default async function QuoteWizardPage({ params }: PageProps) {
     notFound();
   }
 
-  const verticalName = vertical.charAt(0).toUpperCase() + vertical.slice(1);
+  const verticalNames: Record<string, string> = {
+    car: 'Αυτοκινήτου',
+    home: 'Κατοικίας',
+    pet: 'Κατοικιδίων',
+    travel: 'Ταξιδιού',
+  };
+  const verticalName = verticalNames[vertical] || vertical;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-teal-50 py-8 px-4">
@@ -39,10 +51,10 @@ export default async function QuoteWizardPage({ params }: PageProps) {
           {vertical === 'car' ? '🚗' : vertical === 'home' ? '🏠' : vertical === 'pet' ? '🐕' : '✈️'}
         </span>
         <h1 className="text-3xl md:text-4xl font-bold text-slate-800 mb-2">
-          {verticalName} Insurance Quote
+          Προσφορά Ασφάλειας {verticalName}
         </h1>
         <p className="text-slate-500 text-lg">
-          Tell us about yourself to get personalized quotes from 100+ providers
+          Πείτε μας για εσάς για εξατομικευμένες προσφορές από 100+ παρόχους
         </p>
       </div>
 
@@ -54,15 +66,15 @@ export default async function QuoteWizardPage({ params }: PageProps) {
         <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-slate-500">
           <div className="flex items-center gap-2">
             <span className="text-green-500">🔒</span>
-            <span>256-bit SSL Encrypted</span>
+            <span>Κρυπτογράφηση SSL 256-bit</span>
           </div>
           <div className="flex items-center gap-2">
             <span>⭐</span>
-            <span>4.8/5 Trustpilot Rating</span>
+            <span>4.8/5 Βαθμολογία</span>
           </div>
           <div className="flex items-center gap-2">
             <span>🏛️</span>
-            <span>FCA Regulated</span>
+            <span>Εποπτευόμενη Υπηρεσία</span>
           </div>
         </div>
       </div>

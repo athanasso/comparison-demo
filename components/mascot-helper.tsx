@@ -4,14 +4,14 @@ import { useState, useEffect, useCallback } from 'react';
 import { X, MessageCircle, HelpCircle, Sparkles } from 'lucide-react';
 
 const TIPS = [
-  { id: 1, text: "Simples! Adding a higher voluntary excess can lower your premium.", icon: "💡" },
-  { id: 2, text: "Did you know? Parking in a garage overnight can reduce your quote.", icon: "🏠" },
-  { id: 3, text: "Pro tip: Compare both annual and monthly prices - annual is usually cheaper!", icon: "💰" },
-  { id: 4, text: "Good news! Pass Plus certificate holders often get lower premiums.", icon: "🎓" },
-  { id: 5, text: "Remember: The cheapest quote isn't always the best - check the cover level!", icon: "⚖️" },
-  { id: 6, text: "Meerkat says: Adding a black box could save you money as a new driver!", icon: "📦" },
-  { id: 7, text: "Fun fact: Your occupation can affect your premium. Make sure it's accurate!", icon: "💼" },
-  { id: 8, text: "Top tip: Building up no-claims discount is the best way to save long-term!", icon: "⭐" },
+  { id: 1, text: "Απλά! Η μεγαλύτερη προαιρετική απαλλαγή μπορεί να μειώσει το ασφάλιστρο.", icon: "💡" },
+  { id: 2, text: "Ξέρατε; Η στάθμευση σε γκαράζ τη νύχτα μπορεί να μειώσει την προσφορά σας.", icon: "🏠" },
+  { id: 3, text: "Συμβουλή: Συγκρίνετε ετήσιες και μηνιαίες τιμές - η ετήσια είναι συνήθως φθηνότερη!", icon: "💰" },
+  { id: 4, text: "Καλά νέα! Η ολοκλήρωση μαθημάτων οδήγησης μπορεί να μειώσει τα ασφάλιστρα.", icon: "🎓" },
+  { id: 5, text: "Θυμηθείτε: Η φθηνότερη προσφορά δεν είναι πάντα η καλύτερη - ελέγξτε την κάλυψη!", icon: "⚖️" },
+  { id: 6, text: "Η εγκατάσταση GPS tracker μπορεί να εξοικονομήσει χρήματα σε νέους οδηγούς!", icon: "📦" },
+  { id: 7, text: "Ενδιαφέρον: Το επάγγελμά σας μπορεί να επηρεάσει το ασφάλιστρο. Βεβαιωθείτε ότι είναι σωστό!", icon: "💼" },
+  { id: 8, text: "Κορυφαία συμβουλή: Η συσσώρευση Bonus-Malus είναι ο καλύτερος τρόπος για μακροχρόνια εξοικονόμηση!", icon: "⭐" },
 ];
 
 interface MascotHelperProps {
@@ -78,16 +78,16 @@ export function MascotHelper({ showOnIdle = true, idleTimeMs = 10000 }: MascotHe
           className="absolute bottom-20 right-0 w-72 animate-bounce-slow"
           onClick={handleOpen}
         >
-          <div className="bg-white rounded-2xl shadow-2xl p-4 border-2 border-amber-300 cursor-pointer hover:border-amber-400 transition-colors">
+          <div className="bg-white rounded-2xl shadow-2xl p-4 border-2 border-teal-300 cursor-pointer hover:border-teal-400 transition-colors">
             <div className="flex items-start gap-3">
               <span className="text-2xl">{currentTip.icon}</span>
               <div>
                 <p className="text-sm text-slate-700 font-medium">{currentTip.text}</p>
-                <p className="text-xs text-teal-600 font-bold mt-2">Click for more tips!</p>
+                <p className="text-xs text-teal-600 font-bold mt-2">Κλικ για περισσότερα!</p>
               </div>
             </div>
             {/* Speech bubble tail */}
-            <div className="absolute -bottom-3 right-8 w-6 h-6 bg-white border-r-2 border-b-2 border-amber-300 rotate-45" />
+            <div className="absolute -bottom-3 right-8 w-6 h-6 bg-white border-r-2 border-b-2 border-teal-300 rotate-45" />
           </div>
         </div>
       )}
@@ -100,11 +100,11 @@ export function MascotHelper({ showOnIdle = true, idleTimeMs = 10000 }: MascotHe
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="text-xl">🦡</span>
+                  <span className="text-xl">🔍</span>
                 </div>
                 <div>
-                  <h4 className="font-bold">Meerkat Helper</h4>
-                  <p className="text-xs text-white/80">Here to help you save!</p>
+                  <h4 className="font-bold">Βοηθός Sygrineto</h4>
+                  <p className="text-xs text-white/80">Εδώ για να εξοικονομήσετε!</p>
                 </div>
               </div>
               <button
@@ -118,7 +118,7 @@ export function MascotHelper({ showOnIdle = true, idleTimeMs = 10000 }: MascotHe
 
           {/* Content */}
           <div className="p-4">
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-200">
+            <div className="bg-gradient-to-br from-teal-50 to-emerald-50 rounded-xl p-4 border border-teal-200">
               <div className="flex items-start gap-3">
                 <span className="text-3xl">{currentTip.icon}</span>
                 <div>
@@ -132,7 +132,7 @@ export function MascotHelper({ showOnIdle = true, idleTimeMs = 10000 }: MascotHe
               className="w-full mt-4 py-2.5 px-4 bg-slate-100 hover:bg-slate-200 rounded-xl font-medium text-slate-700 transition-colors flex items-center justify-center gap-2"
             >
               <Sparkles className="w-4 h-4" />
-              Another tip!
+              Άλλη συμβουλή!
             </button>
           </div>
 
@@ -141,11 +141,11 @@ export function MascotHelper({ showOnIdle = true, idleTimeMs = 10000 }: MascotHe
             <div className="flex gap-2">
               <button className="flex-1 py-2 px-3 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:border-teal-300 transition-colors flex items-center justify-center gap-1.5">
                 <HelpCircle className="w-4 h-4" />
-                FAQs
+                Ερωτήσεις
               </button>
               <button className="flex-1 py-2 px-3 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:border-teal-300 transition-colors flex items-center justify-center gap-1.5">
                 <MessageCircle className="w-4 h-4" />
-                Contact
+                Επικοινωνία
               </button>
             </div>
           </div>
@@ -161,15 +161,15 @@ export function MascotHelper({ showOnIdle = true, idleTimeMs = 10000 }: MascotHe
           transition-all duration-300 transform hover:scale-110
           ${isOpen
             ? 'bg-slate-700 rotate-0'
-            : 'bg-gradient-to-br from-amber-400 to-orange-500 animate-pulse-slow'
+            : 'bg-gradient-to-br from-blue-400 to-blue-600 animate-pulse-slow'
           }
-          ${showIdlePrompt && !isOpen ? 'ring-4 ring-amber-300 ring-opacity-50' : ''}
+          ${showIdlePrompt && !isOpen ? 'ring-4 ring-teal-300 ring-opacity-50' : ''}
         `}
       >
         {isOpen ? (
           <X className="w-7 h-7 text-white" />
         ) : (
-          <span className="text-3xl">🦡</span>
+          <span className="text-3xl">🔍</span>
         )}
       </button>
     </div>

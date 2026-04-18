@@ -19,11 +19,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const vertical = INSURANCE_VERTICALS.find((v) => v.slug === type);
   
   if (!vertical) {
-    return { title: 'Not Found' };
+    return { title: 'Δεν Βρέθηκε' };
   }
 
   return {
-    title: `Compare ${vertical.title} | CompareKat`,
+    title: `Σύγκριση ${vertical.title} | Sygrineto`,
     description: vertical.description,
   };
 }
@@ -60,18 +60,17 @@ export default async function InsuranceLandingPage({ params }: PageProps) {
               </div>
 
               <h1 className="text-5xl lg:text-6xl font-black text-slate-800 leading-tight">
-                Compare{' '}
+                Σύγκριση{' '}
                 <span 
                   className="text-transparent bg-clip-text"
                   style={{ backgroundImage: `linear-gradient(135deg, ${vertical.color}, ${vertical.color}cc)` }}
                 >
                   {vertical.title}
-                </span>{' '}
-                Quotes
+                </span>
               </h1>
 
               <p className="text-xl text-slate-600 max-w-lg">
-                {vertical.description}. Compare prices from leading UK providers and save money today!
+                {vertical.description}. Συγκρίνετε τιμές από κορυφαίους Ελληνικούς παρόχους και εξοικονομήστε σήμερα!
               </p>
 
               <div className="space-y-4">
@@ -96,7 +95,7 @@ export default async function InsuranceLandingPage({ params }: PageProps) {
                   boxShadow: `0 10px 40px ${vertical.color}40`
                 }}
               >
-                Get Your Quote
+                Πάρτε Προσφορά
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
@@ -113,16 +112,16 @@ export default async function InsuranceLandingPage({ params }: PageProps) {
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
-                    <span className="text-slate-600">Providers compared</span>
+                    <span className="text-slate-600">Πάροχοι σύγκρισης</span>
                     <span className="font-bold text-slate-800">100+</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
-                    <span className="text-slate-600">Average savings</span>
-                    <span className="font-bold" style={{ color: vertical.color }}>£279</span>
+                    <span className="text-slate-600">Μέση εξοικονόμηση</span>
+                    <span className="font-bold" style={{ color: vertical.color }}>€279</span>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
-                    <span className="text-slate-600">Quote time</span>
-                    <span className="font-bold text-slate-800">~5 mins</span>
+                    <span className="text-slate-600">Χρόνος προσφοράς</span>
+                    <span className="font-bold text-slate-800">~5 λεπτά</span>
                   </div>
                 </div>
               </div>
@@ -136,10 +135,10 @@ export default async function InsuranceLandingPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-800 mb-4">
-              Why compare with us?
+              Γιατί να συγκρίνετε μαζί μας;
             </h2>
             <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-              We make finding the right {vertical.title.toLowerCase()} simple, fast, and free
+              Κάνουμε την εύρεση σωστής {vertical.title.toLowerCase()} απλή, γρήγορη και δωρεάν
             </p>
           </div>
 
@@ -147,23 +146,23 @@ export default async function InsuranceLandingPage({ params }: PageProps) {
             {[
               {
                 icon: Shield,
-                title: 'Trusted & Secure',
-                description: 'FCA regulated with bank-grade security for your data',
+                title: 'Αξιόπιστοι & Ασφαλείς',
+                description: 'Εποπτευόμενοι με τραπεζική ασφάλεια δεδομένων',
               },
               {
                 icon: Clock,
-                title: 'Quick Quotes',
-                description: 'Get quotes in minutes, not hours. Fast and efficient.',
+                title: 'Γρήγορες Προσφορές',
+                description: 'Λάβετε προσφορές σε λεπτά, όχι ώρες.',
               },
               {
                 icon: Award,
-                title: 'Best Prices',
-                description: 'We search 100+ providers to find you the best deal.',
+                title: 'Καλύτερες Τιμές',
+                description: 'Ψάχνουμε 100+ παρόχους για την καλύτερη προσφορά.',
               },
               {
                 icon: Users,
-                title: 'Expert Support',
-                description: 'Our UK-based team is here to help when you need it.',
+                title: 'Ειδική Υποστήριξη',
+                description: 'Η ομάδα μας στην Ελλάδα είναι εδώ όταν χρειάζεστε βοήθεια.',
               },
             ].map((benefit) => (
               <div 
@@ -189,30 +188,30 @@ export default async function InsuranceLandingPage({ params }: PageProps) {
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-800 mb-4">
-              Frequently Asked Questions
+              Συχνές Ερωτήσεις
             </h2>
             <p className="text-lg text-slate-500">
-              Got questions? We&apos;ve got answers.
+              Έχετε ερωτήσεις; Έχουμε απαντήσεις.
             </p>
           </div>
 
           <div className="space-y-4">
             {[
               {
-                q: `How does ${vertical.title.toLowerCase()} comparison work?`,
-                a: `We compare prices from over 100 leading UK ${vertical.title.toLowerCase()} providers. Simply tell us about yourself and what cover you need, and we'll show you the best deals available.`,
+                q: `Πώς λειτουργεί η σύγκριση ${vertical.title.toLowerCase()};`,
+                a: `Συγκρίνουμε τιμές από πάνω από 100 κορυφαίους Ελληνικούς παρόχους ${vertical.title.toLowerCase()}. Πείτε μας τι κάλυψη χρειάζεστε και θα σας δείξουμε τις καλύτερες διαθέσιμες προσφορές.`,
               },
               {
-                q: 'Is this service free to use?',
-                a: 'Yes! Our comparison service is completely free. We earn a small commission from providers when you buy through us, but this doesn\'t affect your price.',
+                q: 'Είναι δωρεάν η υπηρεσία;',
+                a: 'Ναι! Η υπηρεσία σύγκρισης είναι εντελώς δωρεάν. Κερδίζουμε μια μικρή προμήθεια από τους παρόχους, χωρίς αυτό να επηρεάζει την τιμή σας.',
               },
               {
-                q: 'How long does it take to get a quote?',
-                a: 'Most quotes take just 5 minutes to complete. We\'ve designed our forms to be as quick and easy as possible.',
+                q: 'Πόσο χρόνο χρειάζεται;',
+                a: 'Οι περισσότερες προσφορές χρειάζονται μόλις 5 λεπτά. Οι φόρμες μας είναι σχεδιασμένες να είναι γρήγορες και εύκολες.',
               },
               {
-                q: 'Are the quotes accurate?',
-                a: 'Yes, the quotes we show are real prices from providers. However, the final price may vary slightly based on additional checks.',
+                q: 'Είναι ακριβείς οι προσφορές;',
+                a: 'Ναι, οι προσφορές είναι πραγματικές τιμές από παρόχους. Η τελική τιμή μπορεί να διαφέρει ελαφρώς βάσει πρόσθετων ελέγχων.',
               },
             ].map((faq, i) => (
               <div 
@@ -237,26 +236,26 @@ export default async function InsuranceLandingPage({ params }: PageProps) {
               ))}
             </div>
             <h2 className="text-4xl font-bold text-slate-800 mb-2">
-              Rated Excellent
+              Αξιολόγηση Άριστα
             </h2>
-            <p className="text-slate-500">Based on 50,000+ reviews on Trustpilot</p>
+            <p className="text-slate-500">Βασισμένη σε 50.000+ κριτικές</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                name: 'Sarah M.',
-                text: `Saved £200 on my ${vertical.title.toLowerCase()}! So easy to use and the whole process took less than 10 minutes.`,
+                name: 'Μαρία Π.',
+                text: `Εξοικονόμησα €200 στην ${vertical.title.toLowerCase()} μου! Πολύ εύκολο στη χρήση και η διαδικασία κράτησε λιγότερο από 10 λεπτά.`,
                 rating: 5,
               },
               {
-                name: 'James T.',
-                text: 'Great service. Found a much better deal than my renewal quote. Highly recommend!',
+                name: 'Γιάννης Κ.',
+                text: 'Εξαιρετική υπηρεσία. Βρήκα πολύ καλύτερη προσφορά από την ανανέωσή μου. Το συνιστώ ανεπιφύλακτα!',
                 rating: 5,
               },
               {
-                name: 'Emily R.',
-                text: 'Very straightforward comparison. The results were clear and it was easy to choose the right policy.',
+                name: 'Ελένη Δ.',
+                text: 'Πολύ απλή σύγκριση. Τα αποτελέσματα ήταν ξεκάθαρα και ήταν εύκολο να επιλέξω τη σωστή ασφάλεια.',
                 rating: 4,
               },
             ].map((review, i) => (
@@ -285,16 +284,16 @@ export default async function InsuranceLandingPage({ params }: PageProps) {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <span className="text-6xl mb-6 block">{vertical.icon}</span>
           <h2 className="text-4xl font-bold mb-4">
-            Ready to compare {vertical.title.toLowerCase()}?
+            Έτοιμοι να συγκρίνετε {vertical.title.toLowerCase()};
           </h2>
           <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Join millions of customers who&apos;ve saved money with CompareKat
+            Γίνετε μέλος σε εκατομμύρια πελάτες που εξοικονόμησαν με τη Sygrineto
           </p>
           <Link
             href={isCarInsurance ? '/quote/car' : '/quote/car'}
             className="inline-flex items-center gap-3 px-10 py-5 bg-white text-slate-800 font-bold text-xl rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
           >
-            Get Your Free Quote
+            Δωρεάν Προσφορά
             <ArrowRight className="w-6 h-6" />
           </Link>
         </div>

@@ -4,7 +4,7 @@ import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
 });
 
 const geistMono = Geist_Mono({
@@ -14,24 +14,24 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "CompareKat | Compare Insurance & Save",
-    template: "%s | CompareKat",
+    default: "Sygrineto | Συγκρίνετε Ασφάλειες & Εξοικονομήστε",
+    template: "%s | Sygrineto",
   },
-  description: "Compare prices from over 100 insurance providers. Car, home, pet, travel insurance and more. Get your quote in minutes!",
-  keywords: ["insurance", "compare", "car insurance", "home insurance", "pet insurance", "travel insurance", "quotes"],
-  authors: [{ name: "CompareKat" }],
+  description: "Συγκρίνετε τιμές από πάνω από 100 ασφαλιστικούς παρόχους. Αυτοκίνητο, κατοικία, κατοικίδια, ταξίδι και πολλά ακόμα. Λάβετε προσφορά σε λίγα λεπτά!",
+  keywords: ["ασφάλεια", "σύγκριση", "ασφάλεια αυτοκινήτου", "ασφάλεια κατοικίας", "ασφάλεια κατοικιδίων", "ασφάλεια ταξιδιού", "προσφορές", "insurance", "compare"],
+  authors: [{ name: "Sygrineto" }],
   openGraph: {
     type: "website",
-    locale: "en_GB",
-    url: "https://comparekat.com",
-    siteName: "CompareKat",
-    title: "CompareKat | Compare Insurance & Save",
-    description: "Compare prices from over 100 insurance providers and save money today!",
+    locale: "el_GR",
+    url: "https://sygrineto.gr",
+    siteName: "Sygrineto",
+    title: "Sygrineto | Συγκρίνετε Ασφάλειες & Εξοικονομήστε",
+    description: "Συγκρίνετε τιμές από πάνω από 100 ασφαλιστικούς παρόχους και εξοικονομήστε σήμερα!",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CompareKat | Compare Insurance & Save",
-    description: "Compare prices from over 100 insurance providers and save money today!",
+    title: "Sygrineto | Συγκρίνετε Ασφάλειες & Εξοικονομήστε",
+    description: "Συγκρίνετε τιμές από πάνω από 100 ασφαλιστικούς παρόχους και εξοικονομήστε σήμερα!",
   },
   robots: {
     index: true,
@@ -45,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="el">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

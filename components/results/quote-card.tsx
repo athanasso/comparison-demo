@@ -17,9 +17,9 @@ export function QuoteCard({ quote, featured = false, rank }: QuoteCardProps) {
   const { provider, pricing, features, rewards, cover_level, marketing_text } = quote;
 
   const coverLevelLabel = {
-    third_party: 'Third Party',
-    third_party_fire_theft: 'Third Party F&T',
-    comprehensive: 'Comprehensive',
+    third_party: 'Μόνο Τρίτων',
+    third_party_fire_theft: 'Τρίτων Π&Κ',
+    comprehensive: 'Μικτή',
   }[cover_level];
 
   return (
@@ -69,7 +69,7 @@ export function QuoteCard({ quote, featured = false, rank }: QuoteCardProps) {
                   }`}
                 />
               ))}
-              <span className="text-sm text-slate-500 ml-1">Defaqto {provider.rating} Star</span>
+              <span className="text-sm text-slate-500 ml-1">{provider.rating} Αστέρια</span>
             </div>
           </div>
         </div>
@@ -89,12 +89,12 @@ export function QuoteCard({ quote, featured = false, rank }: QuoteCardProps) {
       <div className="p-5 bg-gradient-to-br from-slate-50 to-white">
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-sm text-slate-500 mb-1">Annual price</p>
+            <p className="text-sm text-slate-500 mb-1">Ετήσια τιμή</p>
             <p className="text-3xl font-black text-slate-800">
               {formatCurrency(pricing.annual)}
             </p>
             <p className="text-sm text-slate-500">
-              or {formatCurrency(pricing.monthly)}/month
+              ή {formatCurrency(pricing.monthly)}/μήνα
             </p>
           </div>
           <div className="text-right">
@@ -115,16 +115,16 @@ export function QuoteCard({ quote, featured = false, rank }: QuoteCardProps) {
         {/* Excess Info */}
         <div className="flex gap-4 mt-4 pt-4 border-t border-slate-200">
           <div>
-            <p className="text-xs text-slate-500">Compulsory Excess</p>
+            <p className="text-xs text-slate-500">Υποχρεωτική Απαλλαγή</p>
             <p className="font-bold text-slate-700">{formatCurrency(pricing.excess.compulsory)}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-500">Voluntary Excess</p>
+            <p className="text-xs text-slate-500">Προαιρετική Απαλλαγή</p>
             <p className="font-bold text-slate-700">{formatCurrency(pricing.excess.voluntary)}</p>
           </div>
           {pricing.deposit > 0 && (
             <div>
-              <p className="text-xs text-slate-500">Deposit</p>
+              <p className="text-xs text-slate-500">Προκαταβολή</p>
               <p className="font-bold text-slate-700">{formatCurrency(pricing.deposit)}</p>
             </div>
           )}
@@ -134,40 +134,40 @@ export function QuoteCard({ quote, featured = false, rank }: QuoteCardProps) {
       {/* Quick Features */}
       <div className="px-5 py-4 border-t border-slate-100">
         <div className="grid grid-cols-2 gap-2">
-          <FeatureItem included={features.breakdown_cover} label="Breakdown cover" />
-          <FeatureItem included={features.windscreen} label="Windscreen" />
-          <FeatureItem included={features.courtesy_car} label="Courtesy car" />
-          <FeatureItem included={features.legal_protection} label="Legal protection" />
+          <FeatureItem included={features.breakdown_cover} label="Οδική βοήθεια" />
+          <FeatureItem included={features.windscreen} label="Παρμπρίζ" />
+          <FeatureItem included={features.courtesy_car} label="Αμάξι αντικατ." />
+          <FeatureItem included={features.legal_protection} label="Νομική προστασία" />
         </div>
       </div>
 
       {/* Expandable Details */}
       <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96' : 'max-h-0'}`}>
         <div className="px-5 py-4 bg-slate-50 border-t border-slate-200">
-          <h4 className="font-bold text-slate-700 mb-3">All Features</h4>
+          <h4 className="font-bold text-slate-700 mb-3">Όλα τα Χαρακτηριστικά</h4>
           <div className="grid grid-cols-2 gap-2">
-            <FeatureItem included={features.personal_accident} label="Personal accident" />
-            <FeatureItem included={features.no_claims_discount > 0} label={`NCD: ${features.no_claims_discount} years`} />
+            <FeatureItem included={features.personal_accident} label="Προσωπικό ατύχημα" />
+            <FeatureItem included={features.no_claims_discount > 0} label={`Bonus-Malus: ${features.no_claims_discount} χρόνια`} />
           </div>
 
           {/* Rewards Section */}
           {(rewards.meerkat_movies || rewards.meerkat_meals || rewards.cashback > 0) && (
             <div className="mt-4 pt-4 border-t border-slate-200">
-              <h4 className="font-bold text-slate-700 mb-3">🎁 Bonus Rewards</h4>
+              <h4 className="font-bold text-slate-700 mb-3">🎁 Μπόνους Ανταμοιβές</h4>
               <div className="space-y-2">
                 {rewards.meerkat_movies && (
                   <p className="text-sm text-slate-600 flex items-center gap-2">
-                    <span className="text-lg">🎬</span> Meerkat Movies - 2-for-1 cinema tickets
+                    <span className="text-lg">🎬</span> 2-σε-1 εισιτήρια σινεμά
                   </p>
                 )}
                 {rewards.meerkat_meals && (
                   <p className="text-sm text-slate-600 flex items-center gap-2">
-                    <span className="text-lg">🍽️</span> Meerkat Meals - 2-for-1 dining
+                    <span className="text-lg">🍽️</span> 2-σε-1 γεύματα
                   </p>
                 )}
                 {rewards.cashback > 0 && (
                   <p className="text-sm text-slate-600 flex items-center gap-2">
-                    <span className="text-lg">💰</span> £{rewards.cashback} cashback
+                    <span className="text-lg">💰</span> €{rewards.cashback} επιστροφή
                   </p>
                 )}
               </div>
@@ -189,7 +189,7 @@ export function QuoteCard({ quote, featured = false, rank }: QuoteCardProps) {
             }
           `}
         >
-          Go to {provider.name}
+          Μετάβαση στον {provider.name}
           <ExternalLink className="w-5 h-5" />
         </button>
 
@@ -199,11 +199,11 @@ export function QuoteCard({ quote, featured = false, rank }: QuoteCardProps) {
         >
           {isExpanded ? (
             <>
-              Less details <ChevronUp className="w-4 h-4" />
+              Λιγότερες λεπτομέρειες <ChevronUp className="w-4 h-4" />
             </>
           ) : (
             <>
-              More details <ChevronDown className="w-4 h-4" />
+              Περισσότερες λεπτομέρειες <ChevronDown className="w-4 h-4" />
             </>
           )}
         </button>

@@ -42,23 +42,23 @@ export function CoverPreferencesStep() {
   const coverOptions = [
     {
       value: 'comprehensive',
-      title: 'Comprehensive',
-      description: 'Full protection for your car and others',
-      features: ['Accidental damage', 'Fire & theft', 'Third party liability', 'Personal injury'],
+      title: 'Μικτή (Πλήρης)',
+      description: 'Πλήρης προστασία για το αυτοκίνητό σας και τρίτους',
+      features: ['Τυχαία ζημιά', 'Πυρός & κλοπής', 'Αστική ευθύνη', 'Σωματική βλάβη'],
       recommended: true,
     },
     {
       value: 'third_party_fire_theft',
-      title: 'Third Party, Fire & Theft',
-      description: 'Protection against fire, theft, and third party claims',
-      features: ['Fire damage', 'Theft protection', 'Third party liability'],
+      title: 'Τρίτων, Πυρός & Κλοπής',
+      description: 'Προστασία από πυρκαγιά, κλοπή και αξιώσεις τρίτων',
+      features: ['Πυρκαγιά', 'Κλοπή', 'Αστική ευθύνη'],
       recommended: false,
     },
     {
       value: 'third_party',
-      title: 'Third Party Only',
-      description: 'Basic legal requirement cover',
-      features: ['Third party liability only'],
+      title: 'Μόνο Τρίτων',
+      description: 'Βασική νομική κάλυψη',
+      features: ['Αστική ευθύνη μόνο'],
       recommended: false,
     },
   ];
@@ -72,14 +72,14 @@ export function CoverPreferencesStep() {
           <Shield className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-slate-800">Your Cover</h2>
-          <p className="text-slate-500">Choose your level of protection</p>
+          <h2 className="text-2xl font-bold text-slate-800">Η Κάλυψή σας</h2>
+          <p className="text-slate-500">Επιλέξτε το επίπεδο προστασίας</p>
         </div>
       </div>
 
       {/* Cover Level Selection */}
       <div className="space-y-4">
-        <label className="block text-sm font-semibold text-slate-700">Cover Level</label>
+        <label className="block text-sm font-semibold text-slate-700">Επίπεδο Κάλυψης</label>
         <div className="grid gap-4">
           {coverOptions.map((option) => (
             <label
@@ -114,7 +114,7 @@ export function CoverPreferencesStep() {
                   <span className="font-bold text-lg text-slate-800">{option.title}</span>
                   {option.recommended && (
                     <span className="px-3 py-1 bg-gradient-to-r from-amber-400 to-orange-400 text-white text-xs font-bold rounded-full">
-                      RECOMMENDED
+                      ΣΥΝΙΣΤΑΤΑΙ
                     </span>
                   )}
                 </div>
@@ -143,11 +143,11 @@ export function CoverPreferencesStep() {
         <div className="flex items-center justify-between">
           <label className="block text-sm font-semibold text-slate-700">
             <span className="flex items-center gap-2">
-              <Wallet className="w-4 h-4" /> Voluntary Excess
+              <Wallet className="w-4 h-4" /> Προαιρετική Απαλλαγή
             </span>
           </label>
           <span className="text-sm text-slate-500">
-            Higher excess = Lower premium
+            Μεγαλύτερη απαλλαγή = Χαμηλότερο ασφάλιστρο
           </span>
         </div>
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
@@ -164,18 +164,18 @@ export function CoverPreferencesStep() {
                 }
               `}
             >
-              £{amount}
+              €{amount}
             </button>
           ))}
         </div>
         <p className="text-sm text-slate-500">
-          You&apos;ll pay this amount towards any claim, plus any compulsory excess set by the insurer.
+          Θα πληρώσετε αυτό το ποσό σε κάθε αξίωση, συν τυχόν υποχρεωτική απαλλαγή του ασφαλιστή.
         </p>
       </div>
 
       {/* Payment Frequency */}
       <div className="space-y-4">
-        <label className="block text-sm font-semibold text-slate-700">Payment Frequency</label>
+        <label className="block text-sm font-semibold text-slate-700">Συχνότητα Πληρωμής</label>
         <div className="grid grid-cols-2 gap-4">
           <label
             className={`
@@ -204,8 +204,8 @@ export function CoverPreferencesStep() {
               )}
             </div>
             <div>
-              <span className="font-bold text-slate-800">Pay Annually</span>
-              <span className="block text-sm text-slate-500">Save money with one payment</span>
+              <span className="font-bold text-slate-800">Ετήσια Πληρωμή</span>
+              <span className="block text-sm text-slate-500">Εξοικονομήστε με μία πληρωμή</span>
             </div>
           </label>
           <label
@@ -235,8 +235,8 @@ export function CoverPreferencesStep() {
               )}
             </div>
             <div>
-              <span className="font-bold text-slate-800">Pay Monthly</span>
-              <span className="block text-sm text-slate-500">Spread the cost (APR applies)</span>
+              <span className="font-bold text-slate-800">Μηνιαία Πληρωμή</span>
+              <span className="block text-sm text-slate-500">Κατανείμετε το κόστος (ισχύει ΣΕΠΕ)</span>
             </div>
           </label>
         </div>
@@ -246,7 +246,7 @@ export function CoverPreferencesStep() {
       <div className="space-y-2">
         <label className="block text-sm font-semibold text-slate-700">
           <span className="flex items-center gap-2">
-            <Calendar className="w-4 h-4" /> Policy Start Date
+            <Calendar className="w-4 h-4" /> Ημερομηνία Έναρξης
           </span>
         </label>
         <input
@@ -274,7 +274,7 @@ export function CoverPreferencesStep() {
           "
         >
           <ArrowLeft className="w-5 h-5" />
-          Back
+          Πίσω
         </button>
         <button
           type="submit"
@@ -289,7 +289,7 @@ export function CoverPreferencesStep() {
             flex items-center justify-center gap-3
           "
         >
-          Review Your Quote
+          Ανασκόπηση Προσφοράς
           <ArrowRight className="w-5 h-5" />
         </button>
       </div>

@@ -31,7 +31,7 @@ export function VehicleDetailsStep() {
       imported: vehicleDetails.imported ?? false,
       securityFeatures: vehicleDetails.securityFeatures || [],
       overnightLocation: vehicleDetails.overnightLocation || undefined,
-      annualMileage: vehicleDetails.annualMileage || 8000,
+      annualMileage: vehicleDetails.annualMileage || 12000,
       usage: vehicleDetails.usage || undefined,
     },
   });
@@ -59,54 +59,54 @@ export function VehicleDetailsStep() {
           <Car className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-slate-800">Your Vehicle</h2>
-          <p className="text-slate-500">Tell us about your car</p>
+          <h2 className="text-2xl font-bold text-slate-800">Το Αυτοκίνητό σας</h2>
+          <p className="text-slate-500">Πείτε μας για το αυτοκίνητό σας</p>
         </div>
       </div>
 
       {/* Registration Lookup */}
       <div className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl">
         <label className="block text-sm font-semibold text-slate-300 mb-2">
-          Vehicle Registration
+          Αριθμός Κυκλοφορίας
         </label>
         <div className="flex gap-3">
           <div className="flex-1 relative">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
-              <span className="text-white text-xs font-bold">GB</span>
+              <span className="text-white text-xs font-bold">GR</span>
             </div>
             <input
               {...register('registration')}
               className="w-full pl-16 pr-4 py-4 rounded-xl bg-amber-400 text-slate-900 font-mono font-bold text-2xl uppercase tracking-wider border-4 border-slate-600 focus:border-amber-300 outline-none"
-              placeholder="AB12 CDE"
+              placeholder="ΑΒΓ-1234"
             />
           </div>
         </div>
         {errors.registration && <p className="text-red-400 text-sm mt-2">{errors.registration.message}</p>}
-        <p className="text-slate-400 text-sm mt-2">Enter your reg to auto-fill vehicle details</p>
+        <p className="text-slate-400 text-sm mt-2">Εισάγετε τον αρ. κυκλοφορίας για αυτόματη συμπλήρωση</p>
       </div>
 
       {/* Vehicle Details Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          <label className={labelClass}>Make</label>
+          <label className={labelClass}>Μάρκα</label>
           <input
             {...register('make')}
             className={inputClass(!!errors.make)}
-            placeholder="Ford"
+            placeholder="Toyota"
           />
           {errors.make && <p className={errorClass}>{errors.make.message}</p>}
         </div>
         <div>
-          <label className={labelClass}>Model</label>
+          <label className={labelClass}>Μοντέλο</label>
           <input
             {...register('model')}
             className={inputClass(!!errors.model)}
-            placeholder="Focus"
+            placeholder="Yaris"
           />
           {errors.model && <p className={errorClass}>{errors.model.message}</p>}
         </div>
         <div>
-          <label className={labelClass}>Year</label>
+          <label className={labelClass}>Έτος</label>
           <input
             type="number"
             {...register('year', { valueAsNumber: true })}
@@ -123,7 +123,7 @@ export function VehicleDetailsStep() {
         <div>
           <label className={labelClass}>
             <span className="flex items-center gap-2">
-              <Gauge className="w-4 h-4" /> Engine Size (cc)
+              <Gauge className="w-4 h-4" /> Κυβισμός (cc)
             </span>
           </label>
           <input
@@ -134,23 +134,23 @@ export function VehicleDetailsStep() {
           {errors.engineSize && <p className={errorClass}>{errors.engineSize.message}</p>}
         </div>
         <div>
-          <label className={labelClass}>Fuel Type</label>
+          <label className={labelClass}>Καύσιμο</label>
           <select {...register('fuelType')} className={inputClass(!!errors.fuelType)}>
-            <option value="">Select...</option>
-            <option value="petrol">Petrol</option>
-            <option value="diesel">Diesel</option>
-            <option value="electric">Electric</option>
-            <option value="hybrid">Hybrid</option>
-            <option value="lpg">LPG</option>
+            <option value="">Επιλέξτε...</option>
+            <option value="petrol">Βενζίνη</option>
+            <option value="diesel">Πετρέλαιο</option>
+            <option value="electric">Ηλεκτρικό</option>
+            <option value="hybrid">Υβριδικό</option>
+            <option value="lpg">Υγραέριο</option>
           </select>
           {errors.fuelType && <p className={errorClass}>{errors.fuelType.message}</p>}
         </div>
         <div>
-          <label className={labelClass}>Transmission</label>
+          <label className={labelClass}>Κιβώτιο</label>
           <select {...register('transmission')} className={inputClass(!!errors.transmission)}>
-            <option value="">Select...</option>
-            <option value="manual">Manual</option>
-            <option value="automatic">Automatic</option>
+            <option value="">Επιλέξτε...</option>
+            <option value="manual">Χειροκίνητο</option>
+            <option value="automatic">Αυτόματο</option>
           </select>
           {errors.transmission && <p className={errorClass}>{errors.transmission.message}</p>}
         </div>
@@ -159,16 +159,16 @@ export function VehicleDetailsStep() {
       {/* Body & Size */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div>
-          <label className={labelClass}>Body Type</label>
+          <label className={labelClass}>Αμάξωμα</label>
           <input
             {...register('bodyType')}
             className={inputClass(!!errors.bodyType)}
-            placeholder="Hatchback"
+            placeholder="Χάτσμπακ"
           />
           {errors.bodyType && <p className={errorClass}>{errors.bodyType.message}</p>}
         </div>
         <div>
-          <label className={labelClass}>Doors</label>
+          <label className={labelClass}>Πόρτες</label>
           <select {...register('doors', { valueAsNumber: true })} className={inputClass(!!errors.doors)}>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -177,7 +177,7 @@ export function VehicleDetailsStep() {
           </select>
         </div>
         <div>
-          <label className={labelClass}>Seats</label>
+          <label className={labelClass}>Θέσεις</label>
           <select {...register('seats', { valueAsNumber: true })} className={inputClass(!!errors.seats)}>
             {[2, 4, 5, 6, 7, 8, 9].map((n) => (
               <option key={n} value={n}>{n}</option>
@@ -185,7 +185,7 @@ export function VehicleDetailsStep() {
           </select>
         </div>
         <div>
-          <label className={labelClass}>Current Value (£)</label>
+          <label className={labelClass}>Τρέχουσα Αξία (€)</label>
           <input
             type="number"
             {...register('currentValue', { valueAsNumber: true })}
@@ -198,29 +198,29 @@ export function VehicleDetailsStep() {
       {/* Security & Location */}
       <div className="space-y-4">
         <div className="flex items-center gap-2 text-slate-700 font-semibold">
-          <Shield className="w-4 h-4" /> Security & Storage
+          <Shield className="w-4 h-4" /> Ασφάλεια & Αποθήκευση
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>
               <span className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" /> Overnight Location
+                <MapPin className="w-4 h-4" /> Νυχτερινή Στάθμευση
               </span>
             </label>
             <select
               {...register('overnightLocation')}
               className={inputClass(!!errors.overnightLocation)}
             >
-              <option value="">Select...</option>
-              <option value="garage">Locked Garage</option>
-              <option value="driveway">Driveway</option>
-              <option value="street">Street</option>
-              <option value="car_park">Car Park</option>
+              <option value="">Επιλέξτε...</option>
+              <option value="garage">Κλειδωμένο Γκαράζ</option>
+              <option value="driveway">Αυλή / Πυλωτή</option>
+              <option value="street">Δρόμος</option>
+              <option value="car_park">Πάρκινγκ</option>
             </select>
             {errors.overnightLocation && <p className={errorClass}>{errors.overnightLocation.message}</p>}
           </div>
           <div>
-            <label className={labelClass}>Annual Mileage</label>
+            <label className={labelClass}>Ετήσια Χιλιόμετρα</label>
             <input
               type="number"
               {...register('annualMileage', { valueAsNumber: true })}
@@ -234,12 +234,12 @@ export function VehicleDetailsStep() {
 
       {/* Usage */}
       <div>
-        <label className={labelClass}>How do you use your vehicle?</label>
+        <label className={labelClass}>Πώς χρησιμοποιείτε το όχημα;</label>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {[
-            { value: 'social', label: 'Social Only', desc: 'Leisure and domestic use' },
-            { value: 'commuting', label: 'Commuting', desc: 'Driving to work/education' },
-            { value: 'business', label: 'Business Use', desc: 'Work-related driving' },
+            { value: 'social', label: 'Μόνο Κοινωνική', desc: 'Αναψυχή και οικιακή χρήση' },
+            { value: 'commuting', label: 'Μετακίνηση', desc: 'Μετάβαση σε εργασία/εκπαίδευση' },
+            { value: 'business', label: 'Επαγγελματική', desc: 'Εργασιακές μετακινήσεις' },
           ].map((option) => (
             <label
               key={option.value}
@@ -269,7 +269,7 @@ export function VehicleDetailsStep() {
             {...register('modifications')}
             className="w-5 h-5 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
           />
-          <span className="font-medium text-slate-700">Vehicle has modifications</span>
+          <span className="font-medium text-slate-700">Το όχημα έχει τροποποιήσεις</span>
         </label>
         <label className="flex items-center gap-3 cursor-pointer p-4 bg-slate-50 rounded-xl border-2 border-slate-200 hover:border-teal-300 transition-colors">
           <input
@@ -277,7 +277,7 @@ export function VehicleDetailsStep() {
             {...register('imported')}
             className="w-5 h-5 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
           />
-          <span className="font-medium text-slate-700">Vehicle is an import</span>
+          <span className="font-medium text-slate-700">Εισαγόμενο όχημα</span>
         </label>
       </div>
 
@@ -295,7 +295,7 @@ export function VehicleDetailsStep() {
           "
         >
           <ArrowLeft className="w-5 h-5" />
-          Back
+          Πίσω
         </button>
         <button
           type="submit"
@@ -310,7 +310,7 @@ export function VehicleDetailsStep() {
             flex items-center justify-center gap-3
           "
         >
-          Continue to Cover Options
+          Συνέχεια στην Κάλυψη
           <ArrowRight className="w-5 h-5" />
         </button>
       </div>

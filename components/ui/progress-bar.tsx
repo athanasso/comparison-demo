@@ -5,11 +5,11 @@ import { Check } from 'lucide-react';
 import type { WizardStepId } from '@/types';
 
 const STEPS: { id: WizardStepId; label: string }[] = [
-  { id: 'personal', label: 'About You' },
-  { id: 'driving', label: 'Your Driving' },
-  { id: 'vehicle', label: 'Your Car' },
-  { id: 'cover', label: 'Your Cover' },
-  { id: 'review', label: 'Review' },
+  { id: 'personal', label: 'Σχετικά με Εσάς' },
+  { id: 'driving', label: 'Οδήγηση' },
+  { id: 'vehicle', label: 'Αυτοκίνητο' },
+  { id: 'cover', label: 'Κάλυψη' },
+  { id: 'review', label: 'Ανασκόπηση' },
 ];
 
 export function ProgressBar() {

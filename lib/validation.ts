@@ -1,72 +1,72 @@
 import { z } from 'zod';
 
 // ============================================
-// UK-Specific Validation Patterns
+// Greece-Specific Validation Patterns
 // ============================================
-const UK_POSTCODE_REGEX = /^[A-Z]{1,2}[0-9][A-Z0-9]? ?[0-9][A-Z]{2}$/i;
-const UK_PHONE_REGEX = /^(\+44|0)7\d{9}$/;
-const UK_DRIVING_LICENSE_REGEX = /^[A-Z]{2}[0-9]{6}[A-Z]{2}[0-9A-Z]{5}$/i;
-const UK_REG_PLATE_REGEX = /^[A-Z]{2}[0-9]{2}\s?[A-Z]{3}$|^[A-Z][0-9]{1,3}\s?[A-Z]{3}$|^[A-Z]{3}\s?[0-9]{1,3}[A-Z]$|^[0-9]{1,4}\s?[A-Z]{1,3}$|^[A-Z]{1,3}\s?[0-9]{1,4}$/i;
+const GR_POSTCODE_REGEX = /^[0-9]{3}\s?[0-9]{2}$/;
+const GR_PHONE_REGEX = /^(\+30|0)?(69\d{8}|2\d{9})$/;
+const GR_DRIVING_LICENSE_REGEX = /^[A-ZΑ-Ω]{2,3}[0-9]{6,8}$/i;
+const GR_REG_PLATE_REGEX = /^[A-ZΑ-Ω]{3}\s?-?\s?[0-9]{4}$/i;
 
 // ============================================
 // Personal Details Schema
 // ============================================
 export const personalDetailsSchema = z.object({
   title: z.enum(['Mr', 'Mrs', 'Ms', 'Miss', 'Dr', 'Other'], {
-    message: 'Please select a title',
+    message: 'Παρακαλώ επιλέξτε προσφώνηση',
   }),
   firstName: z
     .string()
-    .min(2, 'First name must be at least 2 characters')
-    .max(50, 'First name must be less than 50 characters')
-    .regex(/^[a-zA-Z\s-']+$/, 'First name can only contain letters, spaces, hyphens and apostrophes'),
+    .min(2, 'Το όνομα πρέπει να έχει τουλάχιστον 2 χαρακτήρες')
+    .max(50, 'Το όνομα πρέπει να έχει λιγότερους από 50 χαρακτήρες')
+    .regex(/^[a-zA-Zα-ωΑ-Ωάέήίόύώϊϋΐΰ\s\-']+$/, 'Το όνομα μπορεί να περιέχει μόνο γράμματα, κενά, παύλες και αποστρόφους'),
   lastName: z
     .string()
-    .min(2, 'Last name must be at least 2 characters')
-    .max(50, 'Last name must be less than 50 characters')
-    .regex(/^[a-zA-Z\s-']+$/, 'Last name can only contain letters, spaces, hyphens and apostrophes'),
+    .min(2, 'Το επώνυμο πρέπει να έχει τουλάχιστον 2 χαρακτήρες')
+    .max(50, 'Το επώνυμο πρέπει να έχει λιγότερους από 50 χαρακτήρες')
+    .regex(/^[a-zA-Zα-ωΑ-Ωάέήίόύώϊϋΐΰ\s\-']+$/, 'Το επώνυμο μπορεί να περιέχει μόνο γράμματα, κενά, παύλες και αποστρόφους'),
   dateOfBirth: z
     .string()
     .refine((date) => {
       const dob = new Date(date);
       const age = Math.floor((Date.now() - dob.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
-      return age >= 17;
-    }, 'You must be at least 17 years old to get car insurance')
+      return age >= 18;
+    }, 'Πρέπει να είστε τουλάχιστον 18 ετών για ασφάλεια αυτοκινήτου')
     .refine((date) => {
       const dob = new Date(date);
       const age = Math.floor((Date.now() - dob.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
       return age <= 100;
-    }, 'Please enter a valid date of birth'),
+    }, 'Παρακαλώ εισάγετε έγκυρη ημερομηνία γέννησης'),
   email: z
     .string()
-    .email('Please enter a valid email address'),
+    .email('Παρακαλώ εισάγετε έγκυρο email'),
   phone: z
     .string()
-    .regex(UK_PHONE_REGEX, 'Please enter a valid UK mobile number (e.g., 07123456789)'),
+    .regex(GR_PHONE_REGEX, 'Παρακαλώ εισάγετε έγκυρο ελληνικό τηλέφωνο (π.χ. 6912345678)'),
   address: z.object({
     postcode: z
       .string()
-      .regex(UK_POSTCODE_REGEX, 'Please enter a valid UK postcode'),
+      .regex(GR_POSTCODE_REGEX, 'Παρακαλώ εισάγετε έγκυρο ΤΚ (π.χ. 106 71)'),
     line1: z
       .string()
-      .min(3, 'Address line 1 is required')
-      .max(100, 'Address line 1 must be less than 100 characters'),
+      .min(3, 'Η διεύθυνση είναι υποχρεωτική')
+      .max(100, 'Η διεύθυνση πρέπει να έχει λιγότερους από 100 χαρακτήρες'),
     line2: z.string().max(100).optional(),
     city: z
       .string()
-      .min(2, 'City is required')
-      .max(50, 'City must be less than 50 characters'),
+      .min(2, 'Η πόλη είναι υποχρεωτική')
+      .max(50, 'Η πόλη πρέπει να έχει λιγότερους από 50 χαρακτήρες'),
     county: z.string().max(50).optional(),
   }),
   occupation: z
     .string()
-    .min(2, 'Please enter your occupation')
-    .max(100, 'Occupation must be less than 100 characters'),
+    .min(2, 'Παρακαλώ εισάγετε το επάγγελμά σας')
+    .max(100, 'Το επάγγελμα πρέπει να έχει λιγότερους από 100 χαρακτήρες'),
   employmentStatus: z.enum(['employed', 'self_employed', 'unemployed', 'student', 'retired'], {
-    message: 'Please select your employment status',
+    message: 'Παρακαλώ επιλέξτε εργασιακή κατάσταση',
   }),
   maritalStatus: z.enum(['single', 'married', 'divorced', 'widowed', 'civil_partnership'], {
-    message: 'Please select your marital status',
+    message: 'Παρακαλώ επιλέξτε οικογενειακή κατάσταση',
   }),
   homeOwner: z.boolean(),
 });
@@ -75,16 +75,16 @@ export const personalDetailsSchema = z.object({
 // Driving Details Schema
 // ============================================
 export const drivingDetailsSchema = z.object({
-  licenseType: z.enum(['full_uk', 'provisional', 'eu', 'international'], {
-    message: 'Please select your license type',
+  licenseType: z.enum(['full_gr', 'provisional', 'eu', 'international'], {
+    message: 'Παρακαλώ επιλέξτε τύπο διπλώματος',
   }),
   licenseNumber: z
     .string()
-    .regex(UK_DRIVING_LICENSE_REGEX, 'Please enter a valid UK driving license number'),
+    .regex(GR_DRIVING_LICENSE_REGEX, 'Παρακαλώ εισάγετε έγκυρο αριθμό διπλώματος'),
   yearsHeld: z
     .number()
-    .min(0, 'Years held cannot be negative')
-    .max(80, 'Please enter a valid number of years'),
+    .min(0, 'Τα χρόνια δεν μπορούν να είναι αρνητικά')
+    .max(80, 'Παρακαλώ εισάγετε έγκυρο αριθμό χρόνων'),
   passedPlus: z.boolean(),
   claims: z.array(
     z.object({
@@ -109,14 +109,14 @@ export const drivingDetailsSchema = z.object({
   dvlaAware: z.boolean().optional(),
 }).refine(
   (data) => {
-    // If has medical conditions, DVLA must be aware
+    // If has medical conditions, authorities must be aware
     if (data.medicalConditions && data.dvlaAware === undefined) {
       return false;
     }
     return true;
   },
   {
-    message: 'Please confirm whether the DVLA is aware of your medical conditions',
+    message: 'Παρακαλώ επιβεβαιώστε ότι οι αρμόδιες αρχές γνωρίζουν για τις ιατρικές καταστάσεις σας',
     path: ['dvlaAware'],
   }
 );
@@ -127,48 +127,48 @@ export const drivingDetailsSchema = z.object({
 export const vehicleDetailsSchema = z.object({
   registration: z
     .string()
-    .regex(UK_REG_PLATE_REGEX, 'Please enter a valid UK registration number'),
+    .regex(GR_REG_PLATE_REGEX, 'Παρακαλώ εισάγετε έγκυρο αριθμό κυκλοφορίας (π.χ. ΑΒΓ-1234)'),
   make: z
     .string()
-    .min(2, 'Please enter the vehicle make')
-    .max(50, 'Make must be less than 50 characters'),
+    .min(2, 'Παρακαλώ εισάγετε τη μάρκα')
+    .max(50, 'Η μάρκα πρέπει να έχει λιγότερους από 50 χαρακτήρες'),
   model: z
     .string()
-    .min(1, 'Please enter the vehicle model')
-    .max(50, 'Model must be less than 50 characters'),
+    .min(1, 'Παρακαλώ εισάγετε το μοντέλο')
+    .max(50, 'Το μοντέλο πρέπει να έχει λιγότερους από 50 χαρακτήρες'),
   year: z
     .number()
-    .min(1900, 'Please enter a valid year')
-    .max(new Date().getFullYear() + 1, 'Year cannot be in the future'),
+    .min(1900, 'Παρακαλώ εισάγετε έγκυρο έτος')
+    .max(new Date().getFullYear() + 1, 'Το έτος δεν μπορεί να είναι στο μέλλον'),
   engineSize: z
     .number()
-    .min(50, 'Engine size must be at least 50cc')
-    .max(10000, 'Engine size must be less than 10000cc'),
+    .min(50, 'Ο κυβισμός πρέπει να είναι τουλάχιστον 50cc')
+    .max(10000, 'Ο κυβισμός πρέπει να είναι λιγότερο από 10000cc'),
   fuelType: z.enum(['petrol', 'diesel', 'electric', 'hybrid', 'lpg'], {
-    message: 'Please select fuel type',
+    message: 'Παρακαλώ επιλέξτε καύσιμο',
   }),
   transmission: z.enum(['manual', 'automatic'], {
-    message: 'Please select transmission type',
+    message: 'Παρακαλώ επιλέξτε κιβώτιο',
   }),
-  bodyType: z.string().min(2, 'Please enter body type'),
+  bodyType: z.string().min(2, 'Παρακαλώ εισάγετε τύπο αμαξώματος'),
   doors: z.number().min(1).max(6),
   seats: z.number().min(1).max(12),
   currentValue: z
     .number()
-    .min(100, 'Vehicle value must be at least £100')
-    .max(500000, 'Vehicle value must be less than £500,000'),
+    .min(100, 'Η αξία πρέπει να είναι τουλάχιστον 100€')
+    .max(500000, 'Η αξία πρέπει να είναι λιγότερο από 500.000€'),
   modifications: z.boolean(),
   imported: z.boolean(),
   securityFeatures: z.array(z.string()),
   overnightLocation: z.enum(['garage', 'driveway', 'street', 'car_park'], {
-    message: 'Please select where the vehicle is kept overnight',
+    message: 'Παρακαλώ επιλέξτε πού φυλάσσεται το όχημα τη νύχτα',
   }),
   annualMileage: z
     .number()
-    .min(0, 'Annual mileage cannot be negative')
-    .max(200000, 'Annual mileage seems too high'),
+    .min(0, 'Τα ετήσια χιλιόμετρα δεν μπορούν να είναι αρνητικά')
+    .max(200000, 'Τα ετήσια χιλιόμετρα φαίνονται πολύ υψηλά'),
   usage: z.enum(['social', 'commuting', 'business'], {
-    message: 'Please select how you use the vehicle',
+    message: 'Παρακαλώ επιλέξτε χρήση οχήματος',
   }),
 });
 
@@ -177,14 +177,14 @@ export const vehicleDetailsSchema = z.object({
 // ============================================
 export const coverPreferencesSchema = z.object({
   coverLevel: z.enum(['third_party', 'third_party_fire_theft', 'comprehensive'], {
-    message: 'Please select your cover level',
+    message: 'Παρακαλώ επιλέξτε επίπεδο κάλυψης',
   }),
   voluntaryExcess: z
     .number()
-    .min(0, 'Voluntary excess cannot be negative')
-    .max(1000, 'Voluntary excess must be £1000 or less'),
+    .min(0, 'Η προαιρετική απαλλαγή δεν μπορεί να είναι αρνητική')
+    .max(1000, 'Η προαιρετική απαλλαγή πρέπει να είναι 1000€ ή λιγότερο'),
   paymentFrequency: z.enum(['annual', 'monthly'], {
-    message: 'Please select payment frequency',
+    message: 'Παρακαλώ επιλέξτε συχνότητα πληρωμής',
   }),
   startDate: z.string(),
   additionalDrivers: z.array(

@@ -1,6 +1,6 @@
-# 🦡 CompareKat - Insurance Price Comparison Demo
+# 🔍 Sygrineto - Σύγκριση Ασφαλειών & Υπηρεσιών
 
-A full-featured price comparison website demo built with Next.js 14, inspired by Compare the Market. This project demonstrates modern web development practices including multi-step forms, state management, and SEO-optimized static pages.
+Ένα πλήρες demo ιστοσελίδας σύγκρισης τιμών, χτισμένο με Next.js 16, για τη Greek αγορά. Η εφαρμογή υποστηρίζει ελληνικά (κύρια γλώσσα) και αγγλικά.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
@@ -13,8 +13,9 @@ A full-featured price comparison website demo built with Next.js 14, inspired by
 - 📝 **Multi-Step Quote Wizard** - 5-step form with validation and progress tracking
 - 📊 **Dynamic Results Dashboard** - Sortable, filterable comparison grid
 - 💾 **Persistent State** - Form data saved to localStorage
-- 🦡 **Mascot Helper** - Idle-triggered assistant with tips
-- 🔄 **Streaming API** - Mock quote engine with Server-Sent Events
+- 🔍 **Helper Assistant** - Idle-triggered assistant with tips
+- 🇬🇷 **Greek Localization** - Primary language Greek, English option available
+- 🌐 **Internet & Phone** - Compare broadband and phone plans
 - 📱 **Fully Responsive** - Mobile-first design
 
 ## 🛠️ Tech Stack
@@ -55,9 +56,10 @@ components/
 └── mascot-helper.tsx         # Floating assistant
 
 lib/
-├── validation.ts             # Zod schemas
-├── mock-data.ts              # Mock providers & quotes
-└── utils.ts                  # Utility functions
+├── i18n.ts                   # Internationalization (Greek/English)
+├── validation.ts             # Zod schemas (Greek validation)
+├── mock-data.ts              # Greek providers & quotes
+└── utils.ts                  # Utility functions (EUR/el-GR)
 
 store/
 └── quote-store.ts            # Zustand state management
@@ -101,31 +103,41 @@ npm start
 | Route | Description |
 |-------|-------------|
 | `/` | Homepage with hero, product grid, trust signals |
-| `/insurance/[type]` | Landing pages for car, home, pet, travel, life, energy |
+| `/insurance/[type]` | Landing pages for car, home, pet, travel, life, energy, internet, phone |
 | `/quote/car` | Car insurance quote wizard |
 | `/results` | Quote comparison dashboard |
+
+## 🇬🇷 Localization
+
+- **Primary Language**: Greek (el)
+- **Secondary Language**: English (en)
+- **Validation**: Greek postcodes (5 digits), Greek phone numbers (+30), Greek registration plates (ΑΒΓ-1234), Greek driving licenses
+- **Currency**: EUR (€)
+- **Regulatory**: Bank of Greece (Τράπεζα της Ελλάδος)
+- **Providers**: Greek insurance companies (Εθνική, Interamerican, Eurolife, etc.)
+- **i18n System**: Translation dictionary in `lib/i18n.ts`
 
 ## 🧩 Key Components
 
 ### WizardForm
 Multi-step form wizard with 5 steps:
-1. **Personal Details** - Name, contact, address, occupation
-2. **Driving Details** - License info, claims, convictions
-3. **Vehicle Details** - Registration, make/model, usage
-4. **Cover Preferences** - Cover level, excess, payment frequency
-5. **Review** - Summary before submission
+1. **Σχετικά με Εσάς** - Name, contact, address, occupation
+2. **Οδήγηση** - License info, claims, convictions
+3. **Αυτοκίνητο** - Registration, make/model, usage
+4. **Κάλυψη** - Cover level, excess, payment frequency
+5. **Ανασκόπηση** - Summary before submission
 
 ### ResultsGrid
 - Animated loading with progress indicator
 - Sort by price (low/high), rating, provider name
 - Expandable quote cards with full details
-- Meerkat Rewards integration
+- Rewards integration
 
-### MascotHelper
+### Helper Assistant
 - Fixed position floating assistant
 - Activates after 10 seconds of inactivity
-- Displays helpful tips and hints
-- "Simples!" messaging
+- Displays helpful tips and hints in Greek
+- "Απλά!" messaging
 
 ## 🔧 Configuration
 
@@ -139,6 +151,7 @@ No environment variables required for the demo. All data is mocked.
 - **Providers**: Modify `lib/mock-data.ts` to add/change providers
 - **Validation**: Update schemas in `lib/validation.ts`
 - **Insurance types**: Add verticals in `lib/mock-data.ts`
+- **Translations**: Edit `lib/i18n.ts` for language changes
 
 ## 📝 API Routes
 
@@ -213,4 +226,4 @@ This project is for demonstration purposes. See [LICENSE](LICENSE) for details.
 
 ---
 
-Built with 💚 by athanasso | Inspired by Compare the Market
+Built with 💚 by athanasso | Sygrineto - Σύγκριση Τιμών

@@ -4,7 +4,7 @@
 export interface Provider {
   name: string;
   logoUrl: string;
-  rating: number; // Defaqto rating 1-5
+  rating: number; // Rating 1-5
   sponsored: boolean;
 }
 
@@ -30,7 +30,7 @@ export interface Features {
   courtesy_car: boolean;
   legal_protection: boolean;
   personal_accident: boolean;
-  no_claims_discount: number; // Years protected
+  no_claims_discount: number; // Years protected (Μπόνους-Μάλους)
 }
 
 // ============================================
@@ -81,7 +81,7 @@ export interface PersonalDetails {
     line1: string;
     line2?: string;
     city: string;
-    county?: string;
+    county?: string; // Νομός
   };
   occupation: string;
   employmentStatus: 'employed' | 'self_employed' | 'unemployed' | 'student' | 'retired';
@@ -90,7 +90,7 @@ export interface PersonalDetails {
 }
 
 export interface DrivingDetails {
-  licenseType: 'full_uk' | 'provisional' | 'eu' | 'international';
+  licenseType: 'full_gr' | 'provisional' | 'eu' | 'international';
   licenseNumber: string;
   yearsHeld: number;
   passedPlus: boolean;
@@ -179,7 +179,7 @@ export interface QuoteResponse {
 // ============================================
 // Insurance Vertical Types
 // ============================================
-export type InsuranceVertical = 'car' | 'home' | 'pet' | 'travel' | 'life' | 'energy';
+export type InsuranceVertical = 'car' | 'home' | 'pet' | 'travel' | 'life' | 'energy' | 'internet' | 'phone';
 
 export interface InsuranceVerticalConfig {
   slug: InsuranceVertical;

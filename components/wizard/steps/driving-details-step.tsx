@@ -53,33 +53,33 @@ export function DrivingDetailsStep() {
           <Car className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-slate-800">Your Driving History</h2>
-          <p className="text-slate-500">Tell us about your driving experience</p>
+          <h2 className="text-2xl font-bold text-slate-800">Ιστορικό Οδήγησης</h2>
+          <p className="text-slate-500">Πείτε μας για την οδηγική σας εμπειρία</p>
         </div>
       </div>
 
       {/* License Details */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className={labelClass}>License Type</label>
+          <label className={labelClass}>Τύπος Διπλώματος</label>
           <select
             {...register('licenseType')}
             className={inputClass(!!errors.licenseType)}
           >
-            <option value="">Select...</option>
-            <option value="full_uk">Full UK</option>
-            <option value="provisional">Provisional UK</option>
-            <option value="eu">EU License</option>
-            <option value="international">International</option>
+            <option value="">Επιλέξτε...</option>
+            <option value="full_gr">Ελληνικό Κανονικό</option>
+            <option value="provisional">Ελληνικό Προσωρινό</option>
+            <option value="eu">Ευρωπαϊκό</option>
+            <option value="international">Διεθνές</option>
           </select>
           {errors.licenseType && <p className={errorClass}>{errors.licenseType.message}</p>}
         </div>
         <div>
-          <label className={labelClass}>License Number</label>
+          <label className={labelClass}>Αριθμός Διπλώματος</label>
           <input
             {...register('licenseNumber')}
             className={inputClass(!!errors.licenseNumber)}
-            placeholder="MORGA753116SM9IJ 35"
+            placeholder="ΑΘ1234567"
           />
           {errors.licenseNumber && <p className={errorClass}>{errors.licenseNumber.message}</p>}
         </div>
@@ -88,7 +88,7 @@ export function DrivingDetailsStep() {
       {/* Years Held */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className={labelClass}>Years License Held</label>
+          <label className={labelClass}>Χρόνια Κατοχής Διπλώματος</label>
           <input
             type="number"
             {...register('yearsHeld', { valueAsNumber: true })}
@@ -107,9 +107,9 @@ export function DrivingDetailsStep() {
             />
             <div>
               <span className="font-medium text-slate-700 flex items-center gap-2">
-                <Award className="w-4 h-4 text-amber-500" /> Pass Plus Completed
+                <Award className="w-4 h-4 text-amber-500" /> Πρόσθετα Μαθήματα Οδήγησης
               </span>
-              <span className="text-sm text-slate-500">May reduce your premium</span>
+              <span className="text-sm text-slate-500">Μπορεί να μειώσει το ασφάλιστρο</span>
             </div>
           </label>
         </div>
@@ -120,10 +120,10 @@ export function DrivingDetailsStep() {
         <div className="flex items-start gap-3">
           <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5" />
           <div>
-            <h4 className="font-semibold text-amber-800">Claims & Convictions</h4>
+            <h4 className="font-semibold text-amber-800">Αξιώσεις & Παραβάσεις</h4>
             <p className="text-sm text-amber-700 mt-1">
-              For this demo, we&apos;re assuming you have no previous claims or convictions.
-              In a full implementation, you would be able to add these here.
+              Για τη demo, υποθέτουμε ότι δεν έχετε προηγούμενες αξιώσεις ή παραβάσεις.
+              Σε πραγματική εφαρμογή θα μπορούσατε να τις προσθέσετε εδώ.
             </p>
           </div>
         </div>
@@ -139,10 +139,10 @@ export function DrivingDetailsStep() {
           />
           <div>
             <span className="font-medium text-slate-700">
-              Do you have any medical conditions that affect your driving?
+              Έχετε ιατρική κατάσταση που επηρεάζει την οδήγησή σας;
             </span>
             <span className="block text-sm text-slate-500">
-              E.g., epilepsy, diabetes, visual impairment
+              π.χ. επιληψία, διαβήτης, προβλήματα όρασης
             </span>
           </div>
         </label>
@@ -156,7 +156,7 @@ export function DrivingDetailsStep() {
                 className="w-5 h-5 rounded border-slate-300 text-teal-600 focus:ring-teal-500"
               />
               <span className="font-medium text-teal-700">
-                I confirm the DVLA is aware of my medical condition(s)
+                Επιβεβαιώνω ότι η αρμόδια αρχή είναι ενήμερη για τις ιατρικές μου καταστάσεις
               </span>
             </label>
             {errors.dvlaAware && <p className={errorClass}>{errors.dvlaAware.message}</p>}
@@ -178,7 +178,7 @@ export function DrivingDetailsStep() {
           "
         >
           <ArrowLeft className="w-5 h-5" />
-          Back
+          Πίσω
         </button>
         <button
           type="submit"
@@ -193,7 +193,7 @@ export function DrivingDetailsStep() {
             flex items-center justify-center gap-3
           "
         >
-          Continue to Vehicle Details
+          Συνέχεια στο Όχημα
           <ArrowRight className="w-5 h-5" />
         </button>
       </div>

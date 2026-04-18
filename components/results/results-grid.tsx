@@ -19,7 +19,7 @@ export function ResultsGrid() {
       setIsLoading(true);
       setSearchProgress(0);
 
-      // Simulate progressive loading like the real Compare the Market
+      // Simulate progressive loading
       const intervals = [
         { progress: 15, delay: 400 },
         { progress: 35, delay: 600 },
@@ -57,8 +57,8 @@ export function ResultsGrid() {
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
           <div className="flex flex-col items-center justify-center">
             <div className="relative w-32 h-32 mb-6">
-              {/* Animated meerkat-style loader */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 animate-pulse" />
+              {/* Animated loader */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 animate-pulse" />
               <div className="absolute inset-2 rounded-full bg-white flex items-center justify-center">
                 <span className="text-4xl animate-bounce">🔍</span>
               </div>
@@ -91,11 +91,11 @@ export function ResultsGrid() {
               </svg>
             </div>
             <h3 className="text-xl font-bold text-slate-800 mb-2">
-              Searching {searchProgress < 100 ? `${Math.floor(searchProgress / 2)}` : '50'} insurers...
+              Αναζήτηση σε {searchProgress < 100 ? `${Math.floor(searchProgress / 2)}` : '50'} ασφαλιστές...
             </h3>
             <p className="text-slate-500 text-center max-w-md">
-              We&apos;re comparing quotes from over 100 insurance providers to find you the best deal.
-              <span className="font-semibold text-teal-600"> Simples!</span>
+              Συγκρίνουμε προσφορές από πάνω από 100 ασφαλιστικούς παρόχους.
+              <span className="font-semibold text-teal-600"> Απλά!</span>
             </p>
             <div className="w-full max-w-md mt-6">
               <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
@@ -104,7 +104,7 @@ export function ResultsGrid() {
                   style={{ width: `${searchProgress}%` }}
                 />
               </div>
-              <p className="text-center text-sm text-slate-400 mt-2">{searchProgress}% complete</p>
+              <p className="text-center text-sm text-slate-400 mt-2">{searchProgress}% ολοκληρώθηκε</p>
             </div>
           </div>
         </div>
@@ -122,10 +122,10 @@ export function ResultsGrid() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold text-slate-800">
-              We found {sortedQuotes.length} quotes for you
+              Βρήκαμε {sortedQuotes.length} προσφορές για εσάς
             </h2>
             <p className="text-slate-500">
-              From {new Set(sortedQuotes.map(q => q.provider.name)).size} different providers
+              Από {new Set(sortedQuotes.map(q => q.provider.name)).size} διαφορετικούς παρόχους
             </p>
           </div>
 
@@ -137,10 +137,10 @@ export function ResultsGrid() {
                 onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
                 className="appearance-none pl-10 pr-8 py-3 rounded-xl border-2 border-slate-200 bg-white font-medium text-slate-700 cursor-pointer hover:border-teal-300 transition-colors focus:outline-none focus:border-teal-500"
               >
-                <option value="price_low">Price: Low to High</option>
-                <option value="price_high">Price: High to Low</option>
-                <option value="rating">Highest Rated</option>
-                <option value="provider">Provider A-Z</option>
+                <option value="price_low">Τιμή: Χαμηλή → Υψηλή</option>
+                <option value="price_high">Τιμή: Υψηλή → Χαμηλή</option>
+                <option value="rating">Υψηλότερη Βαθμολογία</option>
+                <option value="provider">Πάροχος Α-Ω</option>
               </select>
               <ArrowUpDown className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
             </div>
@@ -154,7 +154,7 @@ export function ResultsGrid() {
             <button
               onClick={handleRefresh}
               className="p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-teal-300 transition-colors"
-              title="Refresh quotes"
+              title="Ανανέωση προσφορών"
             >
               <RefreshCw className="w-5 h-5 text-slate-600" />
             </button>
@@ -166,7 +166,7 @@ export function ResultsGrid() {
       {sortedQuotes[0]?.provider.sponsored && (
         <div className="relative">
           <div className="absolute -top-3 left-6 px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-full z-10">
-            FEATURED DEAL
+            ΠΡΟΤΕΙΝΟΜΕΝΗ ΠΡΟΣΦΟΡΑ
           </div>
           <QuoteCard quote={sortedQuotes[0]} featured />
         </div>
@@ -186,7 +186,7 @@ export function ResultsGrid() {
       {/* Load More */}
       <div className="text-center pt-4">
         <button className="px-8 py-3 rounded-xl border-2 border-teal-500 text-teal-600 font-bold hover:bg-teal-50 transition-colors">
-          Show More Quotes
+          Εμφάνιση Περισσότερων
         </button>
       </div>
     </div>

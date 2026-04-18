@@ -177,7 +177,7 @@ export const useQuoteStore = create<QuoteState & QuoteActions>()(
       clearResults: () => set({ quotes: [], searchId: null }),
     }),
     {
-      name: 'compare-quote-storage',
+      name: 'sygrineto-quote-storage',
       partialize: (state) => ({
         personalDetails: state.personalDetails,
         drivingDetails: state.drivingDetails,
