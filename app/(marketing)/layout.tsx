@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Menu, X, ChevronDown, Phone, Mail } from 'lucide-react';
-import { MascotHelper } from '@/components/mascot-helper';
+
 
 export default function MarketingLayout({
   children,
@@ -50,6 +50,26 @@ export default function MarketingLayout({
             <div className="hidden lg:flex items-center gap-8">
               <div className="relative group">
                 <button className="flex items-center gap-1 text-slate-700 font-medium hover:text-teal-600 transition-colors py-2">
+                  Υπηρεσίες
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
+                  <div className="p-4 space-y-1">
+                    <Link href="/insurance/internet" className="block px-4 py-3 rounded-lg hover:bg-slate-50 text-slate-700 hover:text-teal-600 transition-colors">
+                      🌐 Ίντερνετ
+                    </Link>
+                    <Link href="/insurance/phone" className="block px-4 py-3 rounded-lg hover:bg-slate-50 text-slate-700 hover:text-teal-600 transition-colors">
+                      📱 Τηλεφωνία
+                    </Link>
+                    <Link href="/insurance/energy" className="block px-4 py-3 rounded-lg hover:bg-slate-50 text-slate-700 hover:text-teal-600 transition-colors">
+                      ⚡ Ενέργεια
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative group">
+                <button className="flex items-center gap-1 text-slate-700 font-medium hover:text-teal-600 transition-colors py-2">
                   Ασφάλειες
                   <ChevronDown className="w-4 h-4" />
                 </button>
@@ -69,26 +89,6 @@ export default function MarketingLayout({
                     </Link>
                     <Link href="/insurance/life" className="block px-4 py-3 rounded-lg hover:bg-slate-50 text-slate-700 hover:text-teal-600 transition-colors">
                       ❤️ Ασφάλεια Ζωής
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="relative group">
-                <button className="flex items-center gap-1 text-slate-700 font-medium hover:text-teal-600 transition-colors py-2">
-                  Υπηρεσίες
-                  <ChevronDown className="w-4 h-4" />
-                </button>
-                <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
-                  <div className="p-4 space-y-1">
-                    <Link href="/insurance/energy" className="block px-4 py-3 rounded-lg hover:bg-slate-50 text-slate-700 hover:text-teal-600 transition-colors">
-                      ⚡ Ενέργεια
-                    </Link>
-                    <Link href="/insurance/internet" className="block px-4 py-3 rounded-lg hover:bg-slate-50 text-slate-700 hover:text-teal-600 transition-colors">
-                      🌐 Ίντερνετ
-                    </Link>
-                    <Link href="/insurance/phone" className="block px-4 py-3 rounded-lg hover:bg-slate-50 text-slate-700 hover:text-teal-600 transition-colors">
-                      📱 Τηλεφωνία
                     </Link>
                   </div>
                 </div>
@@ -137,9 +137,18 @@ export default function MarketingLayout({
                 </div>
                 <span className="text-lg font-black">Syg<span className="text-teal-400">rineto</span></span>
               </Link>
-              <p className="text-slate-400 text-sm mb-4">
-                Βοηθάμε εκατομμύρια πελάτες να συγκρίνουν και να εξοικονομούν από το 2006.
-              </p>
+            </div>
+
+            {/* Services - Top Priority */}
+            <div>
+              <h4 className="font-bold mb-4">Υπηρεσίες</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><Link href="/insurance/internet" className="hover:text-white transition-colors">Ίντερνετ</Link></li>
+                <li><Link href="/insurance/phone" className="hover:text-white transition-colors">Τηλεφωνία</Link></li>
+                <li><Link href="/insurance/energy" className="hover:text-white transition-colors">Ενέργεια</Link></li>
+                <li><Link href="#" className="hover:text-white transition-colors">Πιστωτικές Κάρτες</Link></li>
+                <li><Link href="#" className="hover:text-white transition-colors">Στεγαστικά Δάνεια</Link></li>
+              </ul>
             </div>
 
             {/* Insurance Links */}
@@ -151,18 +160,6 @@ export default function MarketingLayout({
                 <li><Link href="/insurance/pet" className="hover:text-white transition-colors">Ασφάλεια Κατοικιδίων</Link></li>
                 <li><Link href="/insurance/travel" className="hover:text-white transition-colors">Ασφάλεια Ταξιδιού</Link></li>
                 <li><Link href="/insurance/life" className="hover:text-white transition-colors">Ασφάλεια Ζωής</Link></li>
-              </ul>
-            </div>
-
-            {/* More Services */}
-            <div>
-              <h4 className="font-bold mb-4">Υπηρεσίες</h4>
-              <ul className="space-y-2 text-sm text-slate-400">
-                <li><Link href="/insurance/energy" className="hover:text-white transition-colors">Ενέργεια</Link></li>
-                <li><Link href="/insurance/internet" className="hover:text-white transition-colors">Ίντερνετ</Link></li>
-                <li><Link href="/insurance/phone" className="hover:text-white transition-colors">Τηλεφωνία</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Πιστωτικές Κάρτες</Link></li>
-                <li><Link href="#" className="hover:text-white transition-colors">Στεγαστικά Δάνεια</Link></li>
               </ul>
             </div>
 
@@ -209,7 +206,7 @@ export default function MarketingLayout({
       </footer>
 
       {/* Mascot Helper */}
-      <MascotHelper showOnIdle={true} idleTimeMs={15000} />
+
     </div>
   );
 }

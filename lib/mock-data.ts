@@ -153,6 +153,22 @@ export const generateMockQuotes = (
 // ============================================
 export const INSURANCE_VERTICALS = [
   {
+    slug: 'internet' as const,
+    title: 'Ίντερνετ',
+    description: 'Συγκρίνετε παρόχους ίντερνετ και πακέτα ευρυζωνικότητας',
+    icon: '🌐',
+    color: '#2196F3',
+    features: ['Οπτική ίνα', 'VDSL', 'Δορυφορικό', 'Πακέτα TV+Internet'],
+  },
+  {
+    slug: 'phone' as const,
+    title: 'Τηλεφωνία',
+    description: 'Συγκρίνετε προγράμματα κινητής και σταθερής τηλεφωνίας',
+    icon: '📱',
+    color: '#9C27B0',
+    features: ['Κινητή τηλεφωνία', 'Σταθερή', 'Πακέτα data', 'Οικογενειακά πακέτα'],
+  },
+  {
     slug: 'car' as const,
     title: 'Ασφάλεια Αυτοκινήτου',
     description: 'Συγκρίνετε φθηνές ασφάλειες αυτοκινήτου από πάνω από 100 παρόχους',
@@ -199,21 +215,5 @@ export const INSURANCE_VERTICALS = [
     icon: '⚡',
     color: '#FFC107',
     features: ['Σταθερά τιμολόγια', 'Κυμαινόμενα', 'Πράσινη ενέργεια', 'Διπλό καύσιμο'],
-  },
-  {
-    slug: 'internet' as const,
-    title: 'Ίντερνετ',
-    description: 'Συγκρίνετε παρόχους ίντερνετ και πακέτα ευρυζωνικότητας',
-    icon: '🌐',
-    color: '#2196F3',
-    features: ['Οπτική ίνα', 'VDSL', 'Δορυφορικό', 'Πακέτα TV+Internet'],
-  },
-  {
-    slug: 'phone' as const,
-    title: 'Τηλεφωνία',
-    description: 'Συγκρίνετε προγράμματα κινητής και σταθερής τηλεφωνίας',
-    icon: '📱',
-    color: '#9C27B0',
-    features: ['Κινητή τηλεφωνία', 'Σταθερή', 'Πακέτα data', 'Οικογενειακά πακέτα'],
   },
 ];

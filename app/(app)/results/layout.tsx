@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeft, Phone, Edit } from 'lucide-react';
-import { MascotHelper } from '@/components/mascot-helper';
+
 
 export default function ResultsLayout({
   children,
@@ -83,7 +83,7 @@ export default function ResultsLayout({
       </footer>
 
       {/* Mascot Helper */}
-      <MascotHelper showOnIdle={true} idleTimeMs={20000} />
+
     </div>
   );
 }

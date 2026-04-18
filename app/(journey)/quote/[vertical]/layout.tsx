@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeft, Phone } from 'lucide-react';
-import { MascotHelper } from '@/components/mascot-helper';
+
 
 export default function QuoteLayout({
   children,
@@ -69,7 +69,7 @@ export default function QuoteLayout({
       </footer>
 
       {/* Mascot Helper - More aggressive during quote journey */}
-      <MascotHelper showOnIdle={true} idleTimeMs={10000} />
+
     </div>
   );
 }
